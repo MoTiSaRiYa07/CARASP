@@ -35,8 +35,19 @@ public partial class admin_car_detail : System.Web.UI.Page
     {
         
         x.cnopen();
-        str = "insert into tbl_car_factors values(" + ViewState["model"].ToString() + "," + ViewState["version"].ToString() + "," + txtprice.Text + ",'" + ddlbodytype.SelectedItem + "','" + txtyear.Text + "','" + rbfuel.SelectedItem + "','" + txttransmissio.Text + "'," + txtgear.Text + ")";
+        //str = "insert into tbl_car_factors values(" + ViewState["model"].ToString() + "," + ViewState["version"].ToString() + ",'" + ddlprice.SelectedItem + "','" + ddlbodytype.SelectedItem + "','" + ddlyear.SelectedItem + ",'" + rbfuel.SelectedItem + "','" + ddlTransmission.SelectedItem + "','" + ddlGears.SelectedItem + "')";
+        //cmd = new SqlCommand(str, x.cn);
+        //cmd.ExecuteNonQuery();
+        str = "INSERT INTO tbl_car_factors VALUES (@model, @version, @price, @bodytype, @year, @fuel, @transmission, @gears)";
         cmd = new SqlCommand(str, x.cn);
+        cmd.Parameters.AddWithValue("@model", ViewState["model"].ToString());
+        cmd.Parameters.AddWithValue("@version", ViewState["version"].ToString());
+        cmd.Parameters.AddWithValue("@price", ddlprice.SelectedItem != null ? ddlprice.SelectedItem.ToString() : "");
+        cmd.Parameters.AddWithValue("@bodytype", ddlbodytype.SelectedItem != null ? ddlbodytype.SelectedItem.ToString() : "");
+        cmd.Parameters.AddWithValue("@year", ddlyear.SelectedItem != null ? ddlyear.SelectedItem.ToString() : "");
+        cmd.Parameters.AddWithValue("@fuel", rbfuel.SelectedItem != null ? rbfuel.SelectedItem.ToString() : "");
+        cmd.Parameters.AddWithValue("@transmission", ddlTransmission.SelectedItem != null ? ddlTransmission.SelectedItem.ToString() : "");
+        cmd.Parameters.AddWithValue("@gears", ddlGears.SelectedItem != null ? ddlGears.SelectedItem.ToString() : "");
         cmd.ExecuteNonQuery();
         x.cnclose();
 
@@ -84,10 +95,14 @@ public partial class admin_car_detail : System.Web.UI.Page
     }
     public void clear()
     {
-        txtprice.Text="";
-        txtyear.Text="";
-        txttransmissio.Text="";
-        txtgear.Text="";
+        ddlprice.Items.Clear();
+        //txtyear.Text="";
+        //txttransmissio.Text="";
+        ddlTransmission.Items.Clear();
+        //txtgear.Text="";
+        ddlyear.Items.Clear();
+
+        ddlGears.Items.Clear(); 
         txtheight.Text = "";
         txtlength.Text = "";
         txtwidth.Text = "";

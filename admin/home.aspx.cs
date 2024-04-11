@@ -54,6 +54,26 @@ public partial class admin_home : System.Web.UI.Page
         da.Fill(ds);
        lbljust.Text = ds.Tables[0].Rows[0][0].ToString();
 
+        string uuu = "select count(id) from tbl_upcoming";
+        da = new SqlDataAdapter(uuu, x.cn);
+        ds = new DataSet();
+        da.Fill(ds);
+        lblupc.Text = ds.Tables[0].Rows[0][0].ToString();
+
+
+
+        //string uuuu = "select count(id) from tbl_popular";
+        //da = new SqlDataAdapter(uuuu, x.cn);
+        //ds = new DataSet();
+        //da.Fill(ds);
+        //lblpur.Text = ds.Tables[0].Rows[0][0].ToString();
+
+
+        string uuuuu = "select count(testdrive_id) from tbl_testdrive3";
+        da = new SqlDataAdapter(uuuuu, x.cn);
+        ds = new DataSet();
+        da.Fill(ds);
+        lbltestdrive.Text = ds.Tables[0].Rows[0][0].ToString();
 
         ////string str = "SELECT DISTINCT COUNT(dealerid) AS Expr1,address FROM  tbl_dealer GROUP BY address";
         //string str = "SELECT DISTINCT COUNT(userid) AS Expr1,name FROM  tbl_user GROUP BY name";

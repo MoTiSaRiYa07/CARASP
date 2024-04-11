@@ -1,6 +1,55 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="car_image.aspx.cs" Inherits="admin_car_image" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function submitForm() {
+        // Validate form fields
+       <%-- var companyName = $('#<%= txtcname.ClientID %>').val();
+        if (companyName.trim() === '') {
+            alert('Please enter company name.');
+            return false;
+
+        }
+        //if (companyName.length < 5) {
+        //   alert("Company name should be exactly 5 characters long.");
+        //   return false;
+        //}
+
+        // Checking if the company name meets the requirements
+        if (!/^[a-zA-Z0-9]{5,}$/.test(companyName)) {
+            alert("Company name should be at least 5 characters long and contain only alphanumeric characters.");
+            return false;
+        }--%>
+        // Get the file input element
+        var fileUpload = document.getElementById('<%= fu1.ClientID %>');
+        // Check if a file is selected
+        if (fileUpload.files.length === 0) {
+            alert("Please select a file to upload.");
+            return false;
+        }
+
+        var fileName = fileUpload.value;
+        // Check if the file has a valid extension
+        if (!isValidFileExtension(fileName)) {
+            alert("Please select a JPG or PNG file.");
+            return false;
+        }
+
+        // If validation passes, you can submit the form
+        return true;
+    }
+
+    // Function to check if the file extension is valid
+    function isValidFileExtension(fileName) {
+        var validExtensions = ['jpg', 'jpeg', 'png'];
+        var fileExtension = fileName.split('.').pop().toLowerCase();
+        return validExtensions.indexOf(fileExtension) !== -1;
+    }
+
+</script>
+
  <section id="main-content" style="margin-left: 180px;">
       <section class="wrapper">
         <div class="row">
@@ -90,7 +139,7 @@
                             <div class="col-lg-10">
                               <%-- <button class="btn btn-primary" type="submit">Submit</button>--%>
                                   <asp:Button ID="btnsubmit" runat="server" Text="Submit" 
-                                    class="btn btn-primary" onclick="btnsubmit_Click" BackColor="#333333" ></asp:Button>
+                                    class="btn btn-primary" onclick="btnsubmit_Click" BackColor="#333333"   OnClientClick="return submitForm();"></asp:Button>
                             </div>
               </div> 
 

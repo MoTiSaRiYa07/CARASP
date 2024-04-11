@@ -16,8 +16,7 @@
 <asp:GridView ID="GridView1" runat="server" Width="90%" CellPadding="4" AutoGenerateColumns="False" DataKeyNames="testdrive_id" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
-        <asp:CommandField ShowEditButton="True" />
-    <asp:CommandField ShowSelectButton="True" />
+        <asp:CommandField ShowDeleteButton="True" />
 <asp:BoundField DataField="testdrive_id" HeaderText="Test-Drive ID" ReadOnly="True" 
             SortExpression="testdrive_id"></asp:BoundField>
 <asp:BoundField DataField="user_name" HeaderText="First Name" 
@@ -30,11 +29,12 @@
 <asp:BoundField DataField="city" HeaderText="City" SortExpression="city"></asp:BoundField>
 <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date"></asp:BoundField>
 <asp:BoundField DataField="dealerid" HeaderText="DealerID" SortExpression="dealerid"></asp:BoundField>
+<%--<asp:BoundField DataField="payment_order_id" HeaderText="PaymentOrderID" SortExpression="payment_order_id"></asp:BoundField>--%>
+<asp:BoundField DataField="payment_id" HeaderText="PaymentID" SortExpression="payment_id"></asp:BoundField>
+
     <asp:BoundField DataField="status" HeaderText="STATUS" SortExpression="status"></asp:BoundField>
 
-        <asp:CommandField CancelText="" EditText="" InsertText="" NewText="" SelectText="" ShowDeleteButton="True" UpdateText="" />
-
-</Columns>
+</Columns>  
                <FooterStyle BackColor="#990000" Font-Names="Arial" ForeColor="White" Font-Bold="True" />
                <HeaderStyle BackColor="#990000" Font-Bold="True" Font-Names="Arial" ForeColor="White" />
                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
@@ -49,8 +49,8 @@
  <asp:SqlDataSource runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
         DeleteCommand="DELETE FROM [tbl_testdrive3] WHERE [testdrive_id] = @testdrive_id" 
-        InsertCommand="INSERT INTO [tbl_testdrive3] ([user_name], [last_name], [email],[phoneno], [compid], [modelid], [city], [date], [dealerid], [status]) VALUES (@user_name, @last_name, @email, @phoneno, @compid, @modelid, @city, @date, @time, @dealerid, @status)" 
-        SelectCommand="SELECT [testdrive_id], [user_name], [last_name], [email], [phoneno], [compid], [modelid], [city], [date], [dealerid], [status] FROM [tbl_testdrive3]" 
+        InsertCommand="INSERT INTO [tbl_testdrive3] ([user_name], [last_name], [email],[phoneno], [compid], [modelid], [city], [date], [dealerid],  [payment_id], [status]) VALUES (@user_name, @last_name, @email, @phoneno, @compid, @modelid, @city, @date, @time, @dealerid, payment_id, @status)" 
+        SelectCommand="SELECT [testdrive_id], [user_name], [last_name], [email], [phoneno], [compid], [modelid], [city], [date], [dealerid], [payment_order_id], [payment_id], [status] FROM [tbl_testdrive3]" 
         UpdateCommand="UPDATE [tbl_testdrive3] SET [user_name] = @user_name, [last_name] = @last_name, [email] = @email, [phoneno] = @phoneno, [compid] = @compid, [modelid] = @modelid, [city] = @city, [date] = @date, [dealerid] = @dealerid , [status] = @status WHERE [testdrive_id] = @testdrive_id" 
         ID="SqlDataSource1"><DeleteParameters>
 <asp:Parameter Name="testdrive_id" Type="Int32"></asp:Parameter>
@@ -65,13 +65,15 @@
 <asp:Parameter Name="modelid" Type="Int32"></asp:Parameter>
 <asp:Parameter Name="city" Type="String"></asp:Parameter>
 <asp:Parameter Name="date" Type="String"></asp:Parameter>
-
 <asp:Parameter Name="dealerid" Type="Int32"></asp:Parameter>
+<asp:Parameter Name="payment_order_id" Type="String"></asp:Parameter>
+<asp:Parameter Name="payment_id" Type="String"></asp:Parameter>
+
     <asp:Parameter Name="status" Type="String"></asp:Parameter>
 
 </InsertParameters>
 <UpdateParameters>
-<asp:Parameter Name="user_name" Type="String"></asp:Parameter>
+<%--<asp:Parameter Name="user_name" Type="String"></asp:Parameter>
 <asp:Parameter Name="last_name" Type="String"></asp:Parameter>
     <asp:Parameter Name="email" Type="String"></asp:Parameter>
 
@@ -81,7 +83,7 @@
 <asp:Parameter Name="city" Type="String"></asp:Parameter>
 <asp:Parameter Name="date" Type="String"></asp:Parameter>
 <asp:Parameter Name="dealerid" Type="Int32"></asp:Parameter>
-<asp:Parameter Name="testdrive_id" Type="Int32"></asp:Parameter>
+<asp:Parameter Name="testdrive_id" Type="Int32"></asp:Parameter>--%>
         <asp:Parameter Name="status" Type="String"></asp:Parameter>
 
 </UpdateParameters>
@@ -107,7 +109,7 @@
    </section>
    </section>
 
-
+     
 
 
 

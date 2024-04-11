@@ -37,8 +37,16 @@
             </ItemTemplate>
         </asp:TemplateField>
 
- <asp:BoundField DataField="status" HeaderText="STATUS" SortExpression="status"></asp:BoundField>
-
+<%-- <asp:BoundField DataField="status" HeaderText="STATUS" SortExpression="status"></asp:BoundField>--%>
+             <asp:TemplateField HeaderText="STATUS">
+            <ItemTemplate>
+                <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("status") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="StatusTextBox" runat="server" Text='<%# Bind("status") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" />
 </Columns>
 
        <EditRowStyle BackColor="#7C6F57" />
@@ -76,14 +84,7 @@
 
 </InsertParameters>
 <UpdateParameters>
-<%--<asp:Parameter Name="fname" Type="String"></asp:Parameter>
-        <asp:Parameter Name="dealername" Type="String"></asp:Parameter>
 
-<asp:Parameter Name="email" Type="String"></asp:Parameter>
-<asp:Parameter Name="phoeno" Type="String"></asp:Parameter>
-<asp:Parameter Name="password" Type="String"></asp:Parameter>
-   <asp:Parameter Name="lname" Type="String"></asp:Parameter>
-       <asp:Parameter Name="city" Type="String"></asp:Parameter>--%>
         <asp:Parameter Name="status" Type="String"></asp:Parameter>
 
 <asp:Parameter Name="dealerid" Type="Int32"></asp:Parameter>

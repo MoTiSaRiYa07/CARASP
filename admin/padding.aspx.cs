@@ -20,7 +20,7 @@ public partial class admin_padding : System.Web.UI.Page
         int rowIndex = GridView1.EditIndex;
 
         GridViewRow row = GridView1.Rows[rowIndex];
-
+       
         // Get the updated status from the GridView
         string newStatus = e.NewValues["status"].ToString();
 
@@ -33,6 +33,9 @@ public partial class admin_padding : System.Web.UI.Page
             // Send an email
             SendEmail(email);
         }
+
+        //GridViewRow row = GridView1.Rows[e.RowIndex];
+     
     }
 
     private void SendEmail(string email)

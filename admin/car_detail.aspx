@@ -92,7 +92,7 @@
                  <asp:View ID="View1" runat="server">
 
 
-                    <div class="form-group">
+                  <%--  <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">Price</label>
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
@@ -100,7 +100,31 @@
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter price"  ForeColor="Red" ControlToValidate="txtprice"></asp:RequiredFieldValidator>
                       </div>
                         </div>
-                          </div>
+                          </div>--%>
+                            <div class="form-group">
+    <label class="control-label col-lg-2" for="ddlTransmission">Price</label>
+    <div class="col-lg-10">
+         <div class="col-lg-3">
+        <asp:DropDownList ID="ddlprice" runat="server" CssClass="form-control">
+            <asp:ListItem Text="10000" Value="10000"></asp:ListItem>
+            <asp:ListItem Text="20000" Value="20000"></asp:ListItem>
+            <asp:ListItem Text="30000" Value="30000"></asp:ListItem>
+            <asp:ListItem Text="40000" Value="40000"></asp:ListItem>
+            <asp:ListItem Text="50000" Value="50000"></asp:ListItem>
+           <asp:ListItem Text="100000" Value="100000"></asp:ListItem>
+        <asp:ListItem Text="200000" Value="300000"></asp:ListItem>
+       <asp:ListItem Text="400000" Value="4000000"></asp:ListItem>
+                   <asp:ListItem Text="100000" Value="1000000"></asp:ListItem>
+
+       </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+            ErrorMessage="Please select a price " ForeColor="Red" 
+            ControlToValidate="ddlTransmission" InitialValue="0">
+        </asp:RequiredFieldValidator>
+    </div>
+</div>
+         </div>        
+
   <br><br/>
 
 
@@ -126,7 +150,7 @@
 
 
                
-                   <div class="form-group">
+                <%--   <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">Year</label>
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
@@ -134,7 +158,30 @@
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Text="Enter Year"  ForeColor="Red" ControlToValidate="txtyear"></asp:RequiredFieldValidator>
                       </div>
                         </div>
-                          </div>
+                          </div>--%>
+                     
+       <div class="form-group">
+    <label class="control-label col-lg-2" for="ddlTransmission">Year</label>
+    <div class="col-lg-10">
+         <div class="col-lg-3">
+        <asp:DropDownList ID="ddlyear" runat="server" CssClass="form-control">
+            <asp:ListItem Text="2020" Value="2020"></asp:ListItem>
+              <asp:ListItem Text="2021" Value="2021"></asp:ListItem>
+            <asp:ListItem Text="2022" Value="2022"></asp:ListItem>
+            <asp:ListItem Text="2023" Value="2023"></asp:ListItem>
+            <asp:ListItem Text="2024" Value="2024"></asp:ListItem>
+          <asp:ListItem Text="2025" Value="2025"></asp:ListItem>
+           
+
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+            ErrorMessage="Please select a year" ForeColor="Red" 
+            ControlToValidate="ddlTransmission" InitialValue="0">
+        </asp:RequiredFieldValidator>
+    </div>
+</div>
+         </div>        
+
   <br><br/>
 
 
@@ -155,7 +202,7 @@
                    <br><br/><br/><br/><br/>
 
 
-                     <div class="form-group">
+<%--                     <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">Transmission</label>
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
@@ -164,14 +211,28 @@
                       </div>
                         </div>
                           </div>
-  <br><br/>
+  <br><br/>--%>
 
-
+       <div class="form-group">
+    <label class="control-label col-lg-2" for="ddlTransmission">Transmission</label>
+    <div class="col-lg-10">
+         <div class="col-lg-3">
+        <asp:DropDownList ID="ddlTransmission" runat="server" CssClass="form-control">
+            <asp:ListItem Text="Automatic" Value="Automatic"></asp:ListItem>
+            <asp:ListItem Text="Manual" Value="Manual"></asp:ListItem>
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+            ErrorMessage="Please select a Transmission" ForeColor="Red" 
+            ControlToValidate="ddlTransmission" InitialValue="0">
+        </asp:RequiredFieldValidator>
+    </div>
+</div>
+         </div>        
 
              
+<br><br/>
 
-
-                  <div class="form-group">
+                  <%--<div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">No of Gears</label>
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
@@ -181,7 +242,24 @@
                      
                       </div>
                         </div>
-                          </div>
+                          </div>--%>
+                     <div class="form-group">
+    <label class="control-label col-lg-2" for="ddlGears">No of Gears</label>
+    <div class="col-lg-10">
+                 <div class="col-lg-3">
+
+        <asp:DropDownList ID="ddlGears" runat="server" CssClass="form-control">
+            <asp:ListItem Text="6" Value="6"></asp:ListItem>
+            <asp:ListItem Text="8" Value="8"></asp:ListItem>
+            <asp:ListItem Text="12" Value="12"></asp:ListItem>
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+            ErrorMessage="Please select the number of gears" ForeColor="Red" 
+            ControlToValidate="ddlGears" InitialValue="0">
+        </asp:RequiredFieldValidator>
+    </div>
+</div>
+                     </div>
                       <br><br/>
                          
         
@@ -211,9 +289,8 @@
                                 <div class="col-lg-3">
 
                       <asp:TextBox ID="txtheight" runat="server" class="form-control" placeholder="Height"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="Enter Height"  ForeColor="Red" ControlToValidate="txtheight"></asp:RequiredFieldValidator>
-                     
-                      </div>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="Enter Height" ForeColor="Red" ControlToValidate="txtheight"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator4" runat="server" ControlToValidate="txtheight" ErrorMessage="Height must be between 1500 and 3000" ForeColor="Red" Type="Integer" MinimumValue="1500" MaximumValue="3000"></asp:RangeValidator> </div>
                         </div>
                           </div>
 
@@ -225,8 +302,8 @@
                                 <div class="col-lg-3">
 
                       <asp:TextBox ID="txtlength" runat="server" class="form-control" placeholder="Length"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" Text="Enter length"  ForeColor="Red" ControlToValidate="txtlength"></asp:RequiredFieldValidator>
-                      
+<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" Text="Enter Length" ForeColor="Red" ControlToValidate="txtlength"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator7" runat="server" ControlToValidate="txtlength" ErrorMessage="Length must be between 1500 and 3000" ForeColor="Red" Type="Integer" MinimumValue="1500" MaximumValue="3000"></asp:RangeValidator>                   </div>
                       </div>
                         </div>
                           </div>
@@ -238,9 +315,8 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">                    
                                   <asp:TextBox ID="txtwidth" runat="server" class="form-control" placeholder="Width"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" Text="Enter width"  ForeColor="Red" ControlToValidate="txtwidth"></asp:RequiredFieldValidator>
-                      
-                      </div>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" Text="Enter width" ForeColor="Red" ControlToValidate="txtlength"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator5" runat="server" ControlToValidate="txtwidth" ErrorMessage="width must be between 1500 and 3000" ForeColor="Red" Type="Integer" MinimumValue="1500" MaximumValue="3000"></asp:RangeValidator>                   </div>
                         </div>
                           </div>
 
@@ -253,8 +329,8 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">                    
                                   <asp:TextBox ID="txtwheelbase" runat="server" class="form-control" placeholder="Wheelbase"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" Text="Enter Wheelbase"  ForeColor="Red" ControlToValidate="txtwheelbase"></asp:RequiredFieldValidator>
-                     
+<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" Text="Enter Wheelbase" ForeColor="Red" ControlToValidate="txtwheelbase"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator6" runat="server" ControlToValidate="txtwheelbase" ErrorMessage="Wheelbase must be between 1000 and 5000" ForeColor="Red" Type="Integer" MinimumValue="1000" MaximumValue="5000"></asp:RangeValidator>
                       </div>
                         </div>
                           </div>
@@ -268,8 +344,8 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">                    
                                   <asp:TextBox ID="txtdoor" runat="server" class="form-control" placeholder="Door"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" Text="Enter door"  ForeColor="Red" ControlToValidate="txtdoor"></asp:RequiredFieldValidator>
-                     
+<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" Text="Enter Door" ForeColor="Red" ControlToValidate="txtdoor"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtdoor" ErrorMessage="Number of doors must be between 1 and 8" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="8"></asp:RangeValidator>                     
                       </div>
                         </div>
                           </div>
@@ -282,8 +358,8 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">                    
                                   <asp:TextBox ID="txtseatingcapacity" runat="server" class="form-control" placeholder="Seating Capacity"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" Text="Enter seating capacity"  ForeColor="Red" ControlToValidate="txtseatingcapacity"></asp:RequiredFieldValidator>
-                     
+<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" Text="Enter Seating Capacity" ForeColor="Red" ControlToValidate="txtseatingcapacity"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="txtseatingcapacity" ErrorMessage="Seating capacity must be between 1 and 12" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="12"></asp:RangeValidator>                     
                       </div>
                         </div>
                           </div>
@@ -297,8 +373,8 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">                    
                                   <asp:TextBox ID="txtfuelcapacity" runat="server" class="form-control" placeholder="fuel Tank Capacity"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" Text="Enter fuel capacity"  ForeColor="Red" ControlToValidate="txtfuelcapacity"></asp:RequiredFieldValidator>
-                     
+<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" Text="Enter Fuel Capacity" ForeColor="Red" ControlToValidate="txtfuelcapacity"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="txtfuelcapacity" ErrorMessage="Fuel capacity must be between 50 and 200" ForeColor="Red" Type="Integer" MinimumValue="50" MaximumValue="200"></asp:RangeValidator>                     
                       </div>
                         </div>
                           </div>

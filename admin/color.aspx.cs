@@ -32,9 +32,9 @@ public partial class admin_color : System.Web.UI.Page
         }
 
 
-        qry = "insert into tbl_color values(" + ddlmodel.SelectedValue + ",'" + txtcolorname.Text + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
+        qry = "insert into tbl_color values(" + ddlmodel.SelectedValue + ",'" + ddlcolor.SelectedValue + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
         x.colorins(qry);
-        txtcolorname.Text = "";
-
+        //txtcolorname.Text = "";
+       
     }
 }

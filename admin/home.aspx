@@ -72,8 +72,45 @@
    </div>
    <!--/.col-->
     
+           <div class="row">
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+         <div class="info-box blue-bg">
+           <i class="fa fa-car"></i>
+  <div class="count"><asp:Label ID="lblupc" runat="server" Text="Label"></asp:Label></div>
+   <div class="title">Upcoming car</div>
+  </div>
+  <!--/.info-box-->
+</div>
+              
+<!--/.col-->
+    
+      <%--         
+           <div class="row">
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+         <div class="info-box brown-bg">
+           <i class="fa fa-car"></i>
+  <div class="count"><asp:Label ID="lblpur" runat="server" Text="Label"></asp:Label></div>
+   <div class="title">Popular car</div>
+  </div>
+  <!--/.info-box-->
+</div>--%>
+<!--/.col-->
 
-
+ 
+                        
+           <div class="row">
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+         <div class="info-box red-bg">
+              <i class="fa fa-suitcase"></i>
+  <div class="count"><asp:Label ID="lbltestdrive" runat="server" Text="Label"></asp:Label></div>
+   <div class="title">TESTDRIVEBOOKING</div>
+</div>
+    </div>
+               </div>
+               </div>
+               </div>
+         </div>
+   
 
 <%--        <div class="row">
 
