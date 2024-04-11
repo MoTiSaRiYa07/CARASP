@@ -1,0 +1,99 @@
+
+ASP.NET SINUPAGE SRIPT
+
+
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+    function ValidateForm()
+    {
+        var name = document.getElementById("txtname").value;
+        var lname = document.getElementById("txtlname").value;
+        var mo = document.getElementById("txtpno").value;
+        var city = document.getElementById("txtciy").value;
+        var email = document.getElementById("txtemail").value;
+        var password = document.getElementById("txtpassword").value;
+        var rpassword = document.getElementById("txtre_pass").value;
+
+        //codition 1
+
+        if (name == "" && lname == "" && mo == "" && city == "" && email == "" && password == "" && rpassword == "") {
+            alert("PLEASE ALL DETIL ARE FILL");
+            document.getElementById("txtname").focus();
+            return false;
+        }
+        else if (name == "") {
+            alert("USER NAME ARE NECESSORY ! PLZ ENTER USERNAME.........")
+            document.getElementById("txtname").focus();
+
+            return false;
+        }
+        else if (lname == "") {
+            alert(" LATES  NAME ARE NECESSORY ! PLZ ENTER LATESNAME.........")
+            document.getElementById("txtlname").focus();
+
+            return false;
+        }
+        else if (mo == "") {
+            alert("MOBILE ARE NECESSORY ! PLZ ENTER MOBILE.........")
+            document.getElementById("txtpno").focus();
+
+            return false;
+        }
+
+        else if (city == "") {
+            alert("CITY ARE NECESSORY ! PLZ ENTER CITY.........")
+            document.getElementById("txtciy").focus();
+
+            return false;
+        }
+        else if (email == "") {
+            alert("EMAIL ARE NECESSORY ! PLZ ENTER EMAIL.........")
+            document.getElementById("txtemail").focus();
+
+            return false;
+        } else if (password == "") {
+            alert("PASSWORD ARE NECESSORY ! PLZ ENTER PASSWORD.........")
+            document.getElementById("txtpassword").focus();
+
+            return false;
+        } else if (rpassword == "") {
+            alert("REPETE PASSWORD  ARE NECESSORY ! PLZ ENTER REPTE PASSWORD.........")
+            document.getElementById("txtre_pass").focus();
+
+            return false;
+        }
+
+
+            //codiso 2
+        else if (txtpno.length==0) {
+            alert("ENTER USERNAME ! IT CAN NOT BLANK")
+            document.getElementById("txtre_pass").focus();
+
+            return false;
+        }
+
+        else if (txtpno.length < 4) {
+            alert("INVILDE LENGTH.. USER NAME ARE  4 CHARACRER LONG.........")
+            document.getElementById("txtre_pass").focus();
+
+            return false;
+        }
+
+        /////pass
+        else if (password.length < 4 || password.length >= 10) {
+            alert("INVAILD LENGTH, PASSWORD SHOULD BE AT LEAST 4 CHARACTER LONG & MAX 10 CHAR.......")
+            document.getElementById("txtpassword").focus();
+
+            return false;
+        }
+
+    }
+</script>

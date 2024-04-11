@@ -1,0 +1,450 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="add_company.aspx.cs" Inherits="admin_add_company" EnableEventValidation="false" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+   
+   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function submitForm() {
+        // Validate form fields
+        var companyName = $('#<%= txtcname.ClientID %>').val();
+        if (companyName.trim() === '') {
+            alert('Please enter company name.');
+            return false;
+
+        }
+        if (companyName.length !== 5) {
+            alert("Company name should be exactly 5 characters long.");
+            return false;
+        }
+        // Get the file input element
+        var fileUpload = document.getElementById('<%= fu1.ClientID %>');
+        // Check if a file is selected
+        if (fileUpload.files.length === 0) {
+            alert("Please select a file to upload.");
+            return false;
+        }
+
+        var fileName = fileUpload.value;
+        // Check if the file has a valid extension
+        if (!isValidFileExtension(fileName)) {
+            alert("Please select a JPG or PNG file.");
+            return false;
+        }
+
+        // If validation passes, you can submit the form
+        return true;
+    }
+
+    // Function to check if the file extension is valid
+    function isValidFileExtension(fileName) {
+        var validExtensions = ['jpg', 'jpeg', 'png'];
+        var fileExtension = fileName.split('.').pop().toLowerCase();
+        return validExtensions.indexOf(fileExtension) !== -1;
+    }
+
+     
+    
+
+</script>
+
+
+       
+
+
+
+    
+
+    
+  <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-file-text-o"></i>Add Company</h3>
+        <%--<ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+              <li><i class="icon_document_alt"></i>Forms</li>
+              <li><i class="fa fa-file-text-o"></i>Form elements</li>
+            </ol>--%>
+          </div>
+        </div>
+            
+        <!-- Basic Forms & Horizontal Forms-->
+
+         
+        <!-- Inline form-->
+        
+
+        
+        <!-- page end-->
+      
+
+   
+
+            <div class="form-group">
+                  <label class="control-label col-lg-2" for="inputSuccess">Company name</label>
+                    <div class="col-lg-10">
+                      
+                            <div class="col-lg-3">
+                           
+                        <%--  <input class="form-control" type="text" placeholder=".col-lg-3">--%>
+                        <asp:TextBox ID="txtcname" placeholder="Enter Company Name" runat="server" 
+                                    class="form-control"></asp:TextBox>
+                       
+                        </div>
+                        <asp:Button ID="btnsearch" runat="server" Text="Search" 
+                                    class="btn btn-primary" onclick="btnSearch_Click" BackColor="#333333" ></asp:Button>
+
+                      <%--  <div class="col-lg-4">
+                          <input class="form-control" type="text" placeholder=".col-lg-4">
+                        </div>--%>
+                      
+
+                    </div>
+             </div>
+            <br />
+
+                <div class="form-group">
+                       <label class="control-label col-lg-2" for="inputSuccess">Status</label>
+                             <div class="col-lg-10">
+                                <div class="col-lg-3">
+                                       <asp:DropDownList ID="ddlstatus" runat="server" class="form-control m-bot15">
+                                           <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
+                                           <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                       </asp:DropDownList>
+                                </div>
+                                         
+                              </div>
+                  </div>
+
+
+
+
+                    <div class="form-group">
+                    <label for="exampleInputFile" class="control-label col-lg-2">Uplode Logo</label>
+                      <div class="col-lg-10">
+                          <div class="col-lg-3">
+                            
+                                     <asp:FileUpload ID="fu1" runat="server" ForeColor="Red"  >
+                                     </asp:FileUpload>
+                                   
+                          </div>
+                  
+                    </div>
+
+                 <br /><br /> 
+                            <br /><br /> 
+                                   <div class="panel-body">
+                            <div class="col-lg-10">
+                              <%-- <button class="btn btn-primary" type="submit">Submit</button>--%>
+                                  <asp:Button ID="btnsubmit" runat="server" Text="Submit" BackColor="#333333"  class="btn btn-primary" 
+                                    onclick="btnsubmit_Click" OnClientClick="return submitForm();" ></asp:Button>
+
+                            </div>
+              </div>
+
+             <%-- gred view--%>           
+                 
+ <asp:Label ID="lblMessage" runat="server" ForeColor="Green" EnableViewState="false" />
+
+<asp:GridView ID="GridView1" runat="server" BackColor="White"  
+                    BorderStyle="None"  BorderWidth="4px" CellPadding="4" ForeColor="#333333" GridLines="None"
+AutoGenerateColumns="false" Width="100%" OnRowEditing="EditRow" OnRowCancelingEdit="CancelEditRow"
+OnRowUpdating="UpdateRow" DataKeyNames="compid" OnRowDeleting="DeleteRow" AllowPaging="true"
+PageSize="3" OnPageIndexChanging="ChangePage" AutoGenerateDeleteButton="False" 
+                AutoGenerateEditButton="False">
+
+<Columns>
+<asp:TemplateField HeaderText="Edit">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkEdit" runat="server" Text="Edit"  CommandName="Edit" />
+    </ItemTemplate>
+
+<EditItemTemplate>
+    <asp:LinkButton ID="lnkUpdate" runat="server" Text="Update" CommandName="Update" />
+    <asp:LinkButton ID="lnkCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+</EditItemTemplate>
+
+</asp:TemplateField>
+
+    <asp:BoundField HeaderText="Company ID" DataField="compid" ReadOnly="true" />
+<asp:TemplateField HeaderText="company Name">
+    <ItemTemplate>
+        <%# Eval("compname") %>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="txtcompname" runat="server" Text='<%# Eval("compname") %>'/>
+        </EditItemTemplate> 
+</asp:TemplateField>
+<asp:TemplateField HeaderText="Logo">
+    <ItemTemplate>
+       <asp:Image ID="Image1" runat="server" ImageUrl='<%# "company_logo/" + Eval("complogo") %>' Height="100" Width="100"></asp:Image> </ItemTemplate>
+            <EditItemTemplate>
+               <asp:FileUpload ID="fu1" runat="server" ></asp:FileUpload>
+            </EditItemTemplate>
+</asp:TemplateField>
+<asp:TemplateField HeaderText="status">
+    <ItemTemplate>
+        <%# Eval("status") %></ItemTemplate>
+            <EditItemTemplate>
+               <asp:DropDownList ID="ddlstatus" runat="server" SelectedValue='<%# Eval("status") %>'>
+                <asp:ListItem Text="Yes" Value="0" />
+                <asp:ListItem Text="No" Value="1" />
+            </asp:DropDownList>
+            </EditItemTemplate>
+</asp:TemplateField>
+<%--<asp:TemplateField HeaderText="Is Active?">
+    <ItemTemplate>
+        <%# Eval("Active").ToString().Equals("True") ? "Yes" : "No" %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="Left" />
+        <EditItemTemplate>
+          <asp:DropDownList ID="dropActive" runat="server" SelectedValue='<%# Eval("Active") %>'>
+                <asp:ListItem Text="Yes" Value="True" />
+                <asp:ListItem Text="No" Value="False" />
+            </asp:DropDownList>
+        </EditItemTemplate>
+</asp:TemplateField>--%>
+<asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <span onclick="return confirm('Are you sure to delete?')">
+                <asp:LinkButton ID="lnkDelete" runat="server" Text="Delete" ForeColor="Red" CommandName="Delete" />
+        </span>
+     </ItemTemplate>
+</asp:TemplateField>
+</Columns>
+
+                       <FooterStyle BackColor="White" Font-Names="Arial" ForeColor="#333333" />
+               <HeaderStyle BackColor="#343d3d" Font-Bold="True" Font-Names="Arial" ForeColor="White" />
+               <PagerStyle BackColor="#343d3d" ForeColor="White" HorizontalAlign="Center" />
+               <RowStyle BackColor="White" ForeColor="#333333" Font-Names="Arial" Font-Bold="true" BorderColor="#343d3d" />
+               <SelectedRowStyle BackColor="#339966" Font-Bold="True" Font-Names="Arial" ForeColor="White"    BorderColor="#343d3d" />
+               <SortedAscendingCellStyle BackColor="#F7F7F7" />
+               <SortedAscendingHeaderStyle BackColor="#487575" />
+               <SortedDescendingCellStyle BackColor="#E5E5E5" />
+               <SortedDescendingHeaderStyle BackColor="#275353" />
+</asp:GridView>
+
+
+                     
+   
+  </section>
+       <asp:Button ID="Button1" runat="server" Text=" REPORT EXAL CLICK"
+     style="color: red; font-size: 20px; width: 250px; height: 50px; text-align: center; display: block; margin: 0 auto;" OnClick="Button1_Click" />
+
+
+    </section>
+
+
+</asp:Content>
+
+===========================
+        CS FIIIIIIIIIIIIIIIIEE
+================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
+
+
+public partial class admin_add_company : System.Web.UI.Page
+{
+    company x = new company();
+    SqlDataAdapter da = new SqlDataAdapter();
+    DataSet ds;
+    SqlCommand cmd = new SqlCommand();
+    myconn x1 = new myconn();
+    string qry;
+
+    public object XMLWorkerHelper { get; private set; }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["aname"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
+        else
+        {
+            if (!IsPostBack)
+            {
+                PopulateData();
+            }
+        }
+
+    }
+    protected void btnsubmit_Click(object sender, EventArgs e)
+    {
+        string str;
+        Boolean msg = false;
+
+
+        str = Server.MapPath("company_logo/");
+        if (fu1.HasFile)
+        {
+            str = str + fu1.FileName;
+            fu1.SaveAs(str);
+            msg = true;
+
+        }
+
+
+        qry = "insert into tbl_comp values('" + txtcname.Text + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
+        x.compins(qry);
+    }
+
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+
+        qry = "select * from tbl_comp where compname like '" + txtcname.Text + "'";
+        x.compsele(qry);
+
+        GridView1.DataSource = x.ds;
+        GridView1.DataBind();
+
+    }
+
+
+
+    public void DeleteRow(object sender, GridViewDeleteEventArgs e)
+    {
+        var compid = GridView1.DataKeys[e.RowIndex].Value;
+
+        x1.cnopen();
+        {
+            qry = "Delete from tbl_comp" + " where compid = @compid";
+            using (SqlCommand cmd = new SqlCommand(qry, x1.cn))
+            {
+                cmd.Parameters.AddWithValue("@compid", compid);
+                cmd.ExecuteNonQuery();
+                x1.cnclose();
+            }
+        }
+        lblMessage.Text = "Record has been deleted successfully !";
+        lblMessage.ForeColor = System.Drawing.Color.Red;
+        this.PopulateData();
+
+    }
+
+
+    public void PopulateData()
+    {
+        DataTable table = new DataTable();
+        x1.cnopen();
+        {
+            string sql = "Select * from tbl_comp";
+
+            da = new SqlDataAdapter(sql, x1.cn);
+            da.Fill(table);
+
+
+        }
+        GridView1.DataSource = table;
+        GridView1.DataBind();
+    }
+
+    protected void EditRow(object sender, GridViewEditEventArgs e)
+    {
+        GridView1.EditIndex = e.NewEditIndex;
+        this.PopulateData();
+    }
+
+
+    protected void CancelEditRow(object sender, GridViewCancelEditEventArgs e)
+    {
+        GridView1.EditIndex = -1;
+        this.PopulateData();
+    }
+
+
+    protected void ChangePage(object sender, GridViewPageEventArgs e)
+    {
+
+        GridView1.PageIndex = e.NewPageIndex;
+        this.PopulateData();
+    }
+
+
+
+
+    protected void UpdateRow(object sendedr, GridViewUpdateEventArgs e)
+    {
+        var compid = GridView1.DataKeys[e.RowIndex].Value;
+        GridViewRow row = GridView1.Rows[e.RowIndex] as GridViewRow;
+
+        TextBox tcompname = row.FindControl("txtcompname") as TextBox;
+        FileUpload fu1 = row.FindControl("fu1") as FileUpload;
+        DropDownList ddlstatus = row.FindControl("ddlstatus") as DropDownList;
+        string str;
+        Boolean msg = false;
+
+
+        str = Server.MapPath("company_logo/");
+        if (fu1.HasFile)
+        {
+            str = str + fu1.FileName;
+            fu1.SaveAs(str);
+            msg = true;
+
+        }
+
+        x1.cnopen();
+
+        string sql = "Update tbl_comp set compname = @compname,complogo=@complogo,status= @status   where compid = @compid";
+        cmd = new SqlCommand(sql, x1.cn);
+        cmd.Parameters.AddWithValue(
+        "@compname", tcompname.Text.Trim());
+
+        cmd.Parameters.AddWithValue(
+        "@complogo", fu1.FileName.Trim());
+        cmd.Parameters.AddWithValue(
+        "@status", ddlstatus.SelectedValue.Trim());
+
+        cmd.Parameters.AddWithValue(
+        "@compid", compid);
+
+        cmd.ExecuteNonQuery();
+        x1.cnclose();
+        lblMessage.Text = "Record updated successfully !";
+        GridView1.EditIndex = -1;
+        this.PopulateData();
+    }
+
+
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        Response.Clear();
+        Response.Buffer = true;
+        Response.ContentType = "application/ms-excel";
+        Response.AddHeader("content-disposition", "attachment; filename=UserInfo.xls");
+        Response.Charset = "";
+        StringWriter sw = new StringWriter();
+        HtmlTextWriter htw = new HtmlTextWriter(sw);
+        GridView1.RenderControl(htw);
+        Response.Output.Write(sw.ToString());
+        Response.End();
+    }
+
+
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        // Verifies that the control is rendered
+    }
+}
+
+
+
+
+============
