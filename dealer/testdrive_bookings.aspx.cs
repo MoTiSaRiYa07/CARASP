@@ -31,7 +31,7 @@ public partial class dealer_testdrive_bookings : System.Web.UI.Page
             a = int.Parse(ds.Tables[0].Rows[0]["dealerid"].ToString());
 
 
-            str1 = "SELECT distinct tbl_comp.compname, tbl_model.modelname, tbl_testdrive3.dealerid,tbl_testdrive3.email, tbl_testdrive3.date, tbl_testdrive3.city, tbl_testdrive3.phoneno,tbl_testdrive3.email, tbl_testdrive3.last_name, tbl_testdrive3.user_name FROM  tbl_comp INNER JOIN  tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_testdrive3 ON tbl_comp.compid = tbl_testdrive3.compid AND tbl_model.modelid = tbl_testdrive3.modelid where tbl_testdrive3.dealerid=" + a + " and tbl_testdrive3.status = 0";
+            str1 = "SELECT distinct tbl_comp.compname, tbl_model.modelname, tbl_testdrive3.dealerid,tbl_testdrive3.email, tbl_testdrive3.date, tbl_testdrive3.city, tbl_testdrive3.phoneno,tbl_testdrive3.email,tbl_testdrive3.payment_id, tbl_testdrive3.last_name, tbl_testdrive3.user_name FROM  tbl_comp INNER JOIN  tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_testdrive3 ON tbl_comp.compid = tbl_testdrive3.compid AND tbl_model.modelid = tbl_testdrive3.modelid where tbl_testdrive3.dealerid=" + a + " and tbl_testdrive3.status = 0";
             da1 = new SqlDataAdapter(str1, x.cn);
             ds1 = new DataSet();
             da1.Fill(ds1);

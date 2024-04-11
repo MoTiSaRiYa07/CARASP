@@ -9,6 +9,8 @@ using System.Data;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using Razorpay.Api;
+using System.Net.Mail;
+using System.Net;
 
 public partial class user_testdrive : System.Web.UI.Page
 {
@@ -98,8 +100,39 @@ public partial class user_testdrive : System.Web.UI.Page
 
         cmd.ExecuteNonQuery();
 
+        // Send email to user
+        string toEmail = txtemail.Text;
+        string subject = "Test Drive Booking Confirmation";
+        //string body = "<span style='color:green;font-size:10px;'>Dear " + txtname.Text + " " + txtlname.Text + ",<br><br>Your test drive booking has been successfully confirmed. Here are the details of your booking:<br><br>";
+        string body = "<span style='font-size:15px;'>TEST DRIVE BOOKING<br><br>DEALER CONFIRM TEST DRIVE BOOKING YOUR TEST DRIVE SELECT CITY: " + ddlcity.SelectedValue + "<br>";
+        body += "<span style='font-size:15px;'>Name: " + txtname.Text + " " + txtlname.Text + "<br>";
+        body += "<span style='font-size:15px;'>Phone Number: " + txtphoneno.Text + "<br>";
+        body += "<span style='font-size:15px;'>City: " + ddlcity.SelectedValue + "<br>";
+        body += "<span style='font-size:15px;'>BOOKING DATE: " + txtdate.Text + "<br>";
+        body += "<span style='font-size:15px;'>Payment ID: " + paymentId + "<br><br>";
+        body += "<span style='font-size:15px;'>Thank you for Booking us. We look forward to serving you.<br><br>";
+        body += "<span style='font-size:15px;'>Best regards,<br>";
+        //body += "<span style='color:green;font-size:20px;'>TEST DRIVE BOOKING</span>";
+        //body += "DEALER CONFIRM TEST DRIVE BOOKING YOUR TEST DRIVE SELECT CITY ";
+
+        MailMessage mail = new MailMessage();
+        mail.To.Add(toEmail);
+        mail.From = new MailAddress("kingofembroidery@gmail.com");
+        mail.Subject = subject;
+        mail.Body = body;
+        mail.IsBodyHtml = true;
+
+        SmtpClient smtp = new SmtpClient();
+        smtp.Host = "smtp.gmail.com";
+        smtp.Port = 587;
+        smtp.Credentials = new NetworkCredential("kingofembroidery@gmail.com", "nhucdvtnfsemscnv");
+        smtp.EnableSsl = true;
+        smtp.Send(mail);
+
         Response.Write("<script>alert('YOUR TEST DRIVE IS SUCCESSFULLY BOOKED.');window.location.href = 'home.aspx';</script>");
     }
+
+    
 
 
 

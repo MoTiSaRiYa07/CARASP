@@ -58,16 +58,21 @@
 									<td align="center" style="width:8em;  height:1em; max-height:1em; padding-top:.5em;  height:1em; max-height:1em; font-size:20px; padding-right:9em; color:#565656; padding-bottom:.5em;"> <asp:Label ID="lblcomp" runat="server" Text='<%#Eval("compname") %>'></asp:Label></code>&nbsp;<asp:Label ID="lblmodel" runat="server" Text='<%#Eval("modelname") %>'></asp:Label></td>
 								</tr>
 								<tr>
-									<td  align="center" style="width:8em; height:1em; max-height:1em; padding-top:.5em; font-size:20px;padding-right:9em; color:#565656; padding-bottom:.5em;"> <asp:Label ID="lbldate" runat="server" Text='<%#Eval("date") %>'></asp:Label></td>
+									<td  align="center" style="width:8em; height:1em; max-height:1em; padding-top:.5em; font-size:20px;padding-right:9em; color:#565656; padding-bottom:.5em;"> <asp:Label ID="lblpay" runat="server" Text='<%#Eval("payment_id") %>'></asp:Label></td>
 									
 								</tr>
+
+                                <tr>
+				<td  align="center" style="width:8em; height:1em; max-height:1em; padding-top:.5em; font-size:20px;padding-right:9em; color:#565656; padding-bottom:.5em;"> <asp:Label ID="Label2" runat="server" Text='<%#Eval("date") %>'></asp:Label></td>
+				
+</tr>
                               
                                 <tr>
                                     <td align="center" style="width:8em; height:1em; max-height:1em; padding-top:.5em; padding-bottom:.5em; padding-right:9em;">
                                       								   
                                                                        
                                                                        
-                                        <a href='confirm1.aspx?uname=<%#Eval("user_name")%>&email=<%#Eval("email")%>'  >
+                                        <a href='confirm1.aspx?uname=<%#Eval("user_name")%>&email=<%#Eval("email")%>&date=<%#Eval("date")%>&city=<%#Eval("city")%>&payment_id=<%#Eval("payment_id")%>'  >
 
                                             <asp:Label ID="lblconfirm" runat="server" Text="Confirm" style=" background-color:#333333;" class="btn btn-primary aos-init aos-animate"></asp:Label> </a> </td>
                                                                                  
