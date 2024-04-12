@@ -36,7 +36,7 @@ public partial class dealer_dealer_contect_us : System.Web.UI.Page
         mail.To.Add(mailid);
         mail.From = new MailAddress("kingofembroidery@gmail.com");
         mail.Subject = "message from " + txtname.Text;
-        string Body = "Name: " + txtname.Text + "<br>" + "Phone no: " + txtpno.Text + "<br>" + "Email :" + txtemail.Text + "<br>" + txtmsg.Text;
+        string Body = "Name: " + txtname.Text + "<br>" + "Phone no: " + txtpno.Text + "<br>" + "Email :" + txtemail.Text + "<br>" + "message for DEaler comment: " + txtmsg.Text + "";
         mail.Body = Body;
         mail.IsBodyHtml = true;
 

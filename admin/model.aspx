@@ -16,8 +16,13 @@
 
         }
 
-        if (!/^[a-zA-Z0-9]{5,}$/.test(companyName)) {
-            alert("Modal name should be at least 5 characters long and contain only alphanumeric characters.");
+        //if (!/^[a-zA-Z0-9]{5,}$/.test(companyName)) {
+        //    alert("Modal name should be at least 5 characters long and contain only alphanumeric characters.");
+        //    return false;
+        //}
+
+        if (!/^[a-zA-Z0-9]+$/.test(companyName)) {
+            alert("Company name should contain only alphanumeric characters.");
             return false;
         }
         // Get the file input element

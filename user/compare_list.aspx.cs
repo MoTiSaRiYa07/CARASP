@@ -16,58 +16,106 @@ public partial class user_compare_list : System.Web.UI.Page
     {
 
 
+        //string comp1 = Request.QueryString.Get("c1");
+        //string comp2 = Request.QueryString.Get("c2");
+        //string model1 = Request.QueryString.Get("m1");
+        //string model2 = Request.QueryString.Get("m2");
+        //string version1 = Request.QueryString.Get("v1");
+        //string version2 = Request.QueryString.Get("v2");
+        //x.cnopen();
+
+        //str = "SELECT distinct tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_model.image, tbl_car_factors.price, tbl_car_factors.body_type, tbl_car_factors.year, tbl_car_factors.fuel, tbl_car_factors.transmission, tbl_car_factors.no_of_gears FROM tbl_comp INNER JOIN tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN   tbl_car_factors ON tbl_model.modelid = tbl_car_factors.modelid where tbl_comp.compid='" + comp1 + "' and tbl_model.modelid='" + model1 + "' and tbl_version.versionid='" + version1 + "'";
+        //da = new SqlDataAdapter(str, x.cn);
+        //ds = new DataSet();
+        //da.Fill(ds);
+        //carimg1.ImageUrl = "~/admin/model_img/" + ds.Tables[0].Rows[0]["image"].ToString();
+        //lblcomp1.Text = ds.Tables[0].Rows[0]["compname"].ToString();
+        //lblmodel1.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
+        //lblversion1.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
+        //lblprice1.Text = ds.Tables[0].Rows[0]["price"].ToString();
+        //lblbody_type1.Text = ds.Tables[0].Rows[0]["body_type"].ToString();
+        //lblyear1.Text= ds.Tables[0].Rows[0]["year"].ToString();
+        //lblfuel1.Text= ds.Tables[0].Rows[0]["fuel"].ToString();
+        //lbltrans1.Text = ds.Tables[0].Rows[0]["transmission"].ToString();
+        //lblgear1.Text = ds.Tables[0].Rows[0]["no_of_gears"].ToString();
+        //x.cnclose();
+
         string comp1 = Request.QueryString.Get("c1");
         string comp2 = Request.QueryString.Get("c2");
         string model1 = Request.QueryString.Get("m1");
         string model2 = Request.QueryString.Get("m2");
         string version1 = Request.QueryString.Get("v1");
         string version2 = Request.QueryString.Get("v2");
-        x.cnopen();
 
-        str = "SELECT distinct tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_model.image, tbl_car_factors.price, tbl_car_factors.body_type, tbl_car_factors.year, tbl_car_factors.fuel, tbl_car_factors.transmission, tbl_car_factors.no_of_gears FROM tbl_comp INNER JOIN tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN   tbl_car_factors ON tbl_model.modelid = tbl_car_factors.modelid where tbl_comp.compid='" + comp1 + "' and tbl_model.modelid='" + model1 + "' and tbl_version.versionid='" + version1 + "'";
-        da = new SqlDataAdapter(str, x.cn);
-        ds = new DataSet();
+        myconn x = new myconn(); // Creating a new instance of myconn class
+
+        x.cnopen(); // Opening the database connection
+
+        string query = "SELECT distinct tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_model.image, tbl_car_factors.price, tbl_car_factors.body_type, tbl_car_factors.year, tbl_car_factors.fuel, tbl_car_factors.transmission, tbl_car_factors.no_of_gears FROM tbl_comp INNER JOIN tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN tbl_car_factors ON tbl_model.modelid = tbl_car_factors.modelid where tbl_comp.compid='" + comp1 + "' and tbl_model.modelid='" + model1 + "' and tbl_version.versionid='" + version1 + "'";
+        SqlDataAdapter da = new SqlDataAdapter(query, x.cn);
+        DataSet ds = new DataSet();
         da.Fill(ds);
-        carimg1.ImageUrl = "~/admin/model_img/" + ds.Tables[0].Rows[0]["image"].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            carimg1.ImageUrl = "~/admin/model_img/" + ds.Tables[0].Rows[0]["image"].ToString();
         lblcomp1.Text = ds.Tables[0].Rows[0]["compname"].ToString();
         lblmodel1.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
         lblversion1.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
         lblprice1.Text = ds.Tables[0].Rows[0]["price"].ToString();
         lblbody_type1.Text = ds.Tables[0].Rows[0]["body_type"].ToString();
-        lblyear1.Text= ds.Tables[0].Rows[0]["year"].ToString();
-        lblfuel1.Text= ds.Tables[0].Rows[0]["fuel"].ToString();
+        lblyear1.Text = ds.Tables[0].Rows[0]["year"].ToString();
+        lblfuel1.Text = ds.Tables[0].Rows[0]["fuel"].ToString();
         lbltrans1.Text = ds.Tables[0].Rows[0]["transmission"].ToString();
         lblgear1.Text = ds.Tables[0].Rows[0]["no_of_gears"].ToString();
-        x.cnclose();
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
+
+        x.cnclose(); // Closing the database connection
+
 
 
 
         x.cnopen();
-
-        str = "SELECT distinct tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_model.image, tbl_car_factors.price, tbl_car_factors.body_type, tbl_car_factors.year, tbl_car_factors.fuel, tbl_car_factors.transmission, tbl_car_factors.no_of_gears FROM tbl_comp INNER JOIN tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN   tbl_car_factors ON tbl_model.modelid = tbl_car_factors.modelid where tbl_comp.compid='" + comp2 + "' and tbl_model.modelid='" + model2 + "' and tbl_version.versionid='" + version2 + "'";
+        str = "SELECT distinct tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_model.image, tbl_car_factors.price, tbl_car_factors.body_type, tbl_car_factors.year, tbl_car_factors.fuel, tbl_car_factors.transmission, tbl_car_factors.no_of_gears FROM tbl_comp INNER JOIN tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN tbl_car_factors ON tbl_model.modelid = tbl_car_factors.modelid where tbl_comp.compid='" + comp2 + "' and tbl_model.modelid='" + model2 + "' and tbl_version.versionid='" + version2 + "'";
         da = new SqlDataAdapter(str, x.cn);
         ds = new DataSet();
         da.Fill(ds);
-        carimg2.ImageUrl = "~/admin/model_img/" + ds.Tables[0].Rows[0]["image"].ToString();
-        lblcomp2.Text = ds.Tables[0].Rows[0]["compname"].ToString();
-        lblmodel2.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
-        lblversion2.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
-        lblprice2.Text = ds.Tables[0].Rows[0]["price"].ToString();
-        lblbody_type2.Text = ds.Tables[0].Rows[0]["body_type"].ToString();
-        lblyear2.Text = ds.Tables[0].Rows[0]["year"].ToString();
-        lblfuel2.Text = ds.Tables[0].Rows[0]["fuel"].ToString();
-        lbltrans2.Text = ds.Tables[0].Rows[0]["transmission"].ToString();
-        lblgear2.Text = ds.Tables[0].Rows[0]["no_of_gears"].ToString();
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            carimg2.ImageUrl = "~/admin/model_img/" + ds.Tables[0].Rows[0]["image"].ToString();
+            lblcomp2.Text = ds.Tables[0].Rows[0]["compname"].ToString();
+            lblmodel2.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
+            lblversion2.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
+            lblprice2.Text = ds.Tables[0].Rows[0]["price"].ToString();
+            lblbody_type2.Text = ds.Tables[0].Rows[0]["body_type"].ToString();
+            lblyear2.Text = ds.Tables[0].Rows[0]["year"].ToString();
+            lblfuel2.Text = ds.Tables[0].Rows[0]["fuel"].ToString();
+            lbltrans2.Text = ds.Tables[0].Rows[0]["transmission"].ToString();
+            lblgear2.Text = ds.Tables[0].Rows[0]["no_of_gears"].ToString();
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
+
+        // Closing the database connection after fetching data for the second car
         x.cnclose();
 
-
-
-        x.cnopen();
 
         str = "SELECT tbl_comp.compid, tbl_comp.compname, tbl_model.modelid, tbl_model.modelname, tbl_version.versionid, tbl_version.versionname, tbl_car_specification.height, tbl_car_specification.length,  tbl_car_specification.width, tbl_car_specification.wheelbase, tbl_car_specification.door, tbl_car_specification.seating_capacity, tbl_car_specification.fuel_capacity FROM            tbl_comp INNER JOIN  tbl_model ON tbl_comp.compid = tbl_model.compid INNER JOIN  tbl_version ON tbl_model.modelid = tbl_version.modelid INNER JOIN   tbl_car_specification ON tbl_model.modelid = tbl_car_specification.modelid where tbl_comp.compid='" + comp1 + "' and tbl_model.modelid='" + model1 + "' and tbl_version.versionid='" + version1 + "'";
         da = new SqlDataAdapter(str, x.cn);
         ds = new DataSet();
         da.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
         lblcomp5.Text = ds.Tables[0].Rows[0]["compname"].ToString();
         lblmodel5.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
         lblversion5.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
@@ -78,6 +126,14 @@ public partial class user_compare_list : System.Web.UI.Page
         lbldoor1.Text = ds.Tables[0].Rows[0]["door"].ToString();
         lblSeating_capacity1.Text = ds.Tables[0].Rows[0]["seating_capacity"].ToString();
         lblfuel_capacity1.Text = ds.Tables[0].Rows[0]["Fuel_capacity"].ToString();
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
+
         x.cnclose();
 
 
@@ -87,7 +143,9 @@ public partial class user_compare_list : System.Web.UI.Page
         da = new SqlDataAdapter(str, x.cn);
         ds = new DataSet();
         da.Fill(ds);
-        lblcomp6.Text = ds.Tables[0].Rows[0]["compname"].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            lblcomp6.Text = ds.Tables[0].Rows[0]["compname"].ToString();
         lblmodel6.Text = ds.Tables[0].Rows[0]["modelname"].ToString();
         lblversion6.Text = ds.Tables[0].Rows[0]["versionname"].ToString();
         lblheight2.Text = ds.Tables[0].Rows[0]["height"].ToString();
@@ -97,6 +155,13 @@ public partial class user_compare_list : System.Web.UI.Page
         lbldoor2.Text = ds.Tables[0].Rows[0]["door"].ToString();
         lblSeating_capacity2.Text = ds.Tables[0].Rows[0]["seating_capacity"].ToString();
         lblfuel_capacity2.Text = ds.Tables[0].Rows[0]["Fuel_capacity"].ToString();
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
         x.cnclose();
 
         x.cnopen();
@@ -105,7 +170,9 @@ public partial class user_compare_list : System.Web.UI.Page
         da = new SqlDataAdapter(str, x.cn);
         ds = new DataSet();
         da.Fill(ds);
-        lblac1.Text = ds.Tables[0].Rows[0]["ac"].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            lblac1.Text = ds.Tables[0].Rows[0]["ac"].ToString();
         lblclimate_control1.Text = ds.Tables[0].Rows[0]["climate_control"].ToString();
         lblcd_player1.Text = ds.Tables[0].Rows[0]["cd_player"].ToString();
         lblpower_steering1.Text = ds.Tables[0].Rows[0]["power_steering"].ToString();
@@ -123,7 +190,13 @@ public partial class user_compare_list : System.Web.UI.Page
         lblairbag1.Text = ds.Tables[0].Rows[0]["airbag"].ToString();
         lblparking_sensor1.Text = ds.Tables[0].Rows[0]["parking_sensors"].ToString();
         lbltraction_control1.Text = ds.Tables[0].Rows[0]["traction_control"].ToString();
-
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
         x.cnclose();
 
 
@@ -134,7 +207,9 @@ public partial class user_compare_list : System.Web.UI.Page
         da = new SqlDataAdapter(str, x.cn);
         ds = new DataSet();
         da.Fill(ds);
-        lblac2.Text = ds.Tables[0].Rows[0]["ac"].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            lblac2.Text = ds.Tables[0].Rows[0]["ac"].ToString();
         lblclimate_control2.Text = ds.Tables[0].Rows[0]["climate_control"].ToString();
         lblcd_player2.Text = ds.Tables[0].Rows[0]["cd_player"].ToString();
         lblpower_steering2.Text = ds.Tables[0].Rows[0]["power_steering"].ToString();
@@ -152,7 +227,13 @@ public partial class user_compare_list : System.Web.UI.Page
         lblairbag2.Text = ds.Tables[0].Rows[0]["airbag"].ToString();
         lblparking_sensor2.Text = ds.Tables[0].Rows[0]["parking_sensors"].ToString();
         lbltraction_control2.Text = ds.Tables[0].Rows[0]["traction_control"].ToString();
-
+        }
+        else
+        {
+            // Display an alert message using JavaScript
+            string script = "<script>alert('No data found for the second car.');</script>";
+            ClientScript.RegisterStartupScript(this.GetType(), "NoDataAlert", script);
+        }
         x.cnclose();
 
     }

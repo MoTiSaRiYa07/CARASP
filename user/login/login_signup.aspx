@@ -336,12 +336,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 //errorMessage = "Please enter a First name.";
 
                 isValid = false;
-            } else if (username.length < minLength || username.length > maxLength) {
-                //errorMessage = "First name must be between " + minLength + " and " + maxLength + " characters long.";
-                alert("First name must be between " + minLength + " and " + maxLength + " characters long.");
+            }
+            //else if (username.length < minLength || username.length > maxLength) {
+            //    //errorMessage = "First name must be between " + minLength + " and " + maxLength + " characters long.";
+            //    alert("First name must be between " + minLength + " and " + maxLength + " characters long.");
 
-                isValid = false;
-            } else {
+            //    isValid = false;
+            //}
+            else {
                 var usernameRegex = /^[a-zA-Z]+$/;
                 if (!usernameRegex.test(username)) {
                     //errorMessage = "First Name can only contain letters";
@@ -419,7 +421,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     alert("Please Enter Email Address");
                     isValid = false;
                 } else {
-                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    var emailRegex = /^[^\s@]+@(ac\.in|[^@\s]+\.[^@\s]+)$/;
                     if (!emailRegex.test(EmailId)) {
                         alert('Invalid Email Address. Please enter valid email e.g abc@domain.com');
                         isValid = false;

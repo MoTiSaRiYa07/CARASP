@@ -62,9 +62,9 @@
 										<h4></h4>
 										<div class="login-top">
 											 <form action="#" method="post">
-									<asp:TextBox ID="txtname" runat="server" class="email" placeholder="username" required=""></asp:TextBox>
+									<asp:TextBox ID="txtname" runat="server" class="email" placeholder="username" required="" ReadOnly></asp:TextBox>
 
-                                         <asp:TextBox ID="txtemail" runat="server" class="email" placeholder="Email" required=""></asp:TextBox>
+                                         <asp:TextBox ID="txtemail" runat="server" class="email" placeholder="Email" required="" ReadOnly></asp:TextBox>
 							                  <asp:TextBox ID="txtcommit" runat="server" class="email" required="" placeholder="comment"></asp:TextBox>
 
 												<%--<input name="email" class="email" required="" type="text" placeholder="Email">--%>

@@ -131,7 +131,14 @@ public partial class admin_add_company : System.Web.UI.Page
             
             qry = "insert into tbl_comp values('" + txtcname.Text + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
             x.compins(qry);
-        }
+        clear();
+    }
+
+    private void clear()
+    {
+       txtcname.Text = "";
+       
+    }
 
     private bool IsCompanyNameExists(string companyName)
     {

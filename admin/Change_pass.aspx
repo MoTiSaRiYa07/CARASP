@@ -55,14 +55,14 @@
                         <form runat="server">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">ENTER CURRENT PASSWORD</label>
-                                 <asp:TextBox ID="txtcurrent"  class="form-control form-control-sm"  runat="server" />
+                                 <asp:TextBox ID="txtcurrent"  class="form-control form-control-sm"  TextMode="Password" runat="server" />
                             </div>
                              <div class="form-group">
      <label for="exampleInputEmail1">ENTER NEW PASSWORD</label>
-                                 <asp:TextBox ID="txtnew"  class="form-control form-control-sm"  runat="server" />
+                                 <asp:TextBox ID="txtnew"  class="form-control form-control-sm"  TextMode="Password" runat="server" />
  </div> <div class="form-group">
      <label for="exampleInputEmail1">ENTER RE-PASSWORD</label>
-                                 <asp:TextBox ID="txtret"  class="form-control form-control-sm"  runat="server" />
+                                 <asp:TextBox ID="txtret"  class="form-control form-control-sm" TextMode="Password" runat="server" />
  </div>
                             <asp:Button ID="loginBtn" runat="server" Text="ChangePassword" CssClass="btn btn-primary btn-block" OnClick="loginBtn_Click"/>
                             

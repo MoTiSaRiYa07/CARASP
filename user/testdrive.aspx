@@ -8,6 +8,9 @@
                var city = document.getElementById('<%= ddlcity.ClientID %>').value;
         var date = document.getElementById('<%= txtdate.ClientID %>').value;
                var pay = document.getElementById('<%= txtpay.ClientID %>').value;
+<%--               var dealerSelected = document.getElementById('<%= GridView1.ClientID %>') !== null && document.getElementById('<%= GridView1.ClientID %>').getElementsByTagName('tr').length > 1;--%>
+              <%-- var gridView = document.getElementById('<%= GridView1.ClientID %>');
+               var selectedRowIndex = gridView.selectedIndex;--%>
 
                if (city === '') {
                    alert('Please select a city from the dropdown.');
@@ -20,6 +23,7 @@
                    alert('Please select a payment for the test drive.');
                    return false;
                }
+              
 
                return true;
            }
@@ -370,7 +374,7 @@
                   <asp:GridView ID="GridView1" runat="server" BackColor="White" Width="90%"  
                     BorderStyle="None"  BorderWidth="0px" CellPadding="4" DataKeyNames="dealerid" 
                     GridLines="Horizontal" 
-                    onselectedindexchanged="GridView1_SelectedIndexChanged" >
+                    onselectedindexchanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" >
                <Columns>
                    <asp:CommandField ShowSelectButton="True" ControlStyle-Font-Names="Arial"  ControlStyle-Font-Bold="true" ControlStyle-BorderColor="#343d3d" />
                    

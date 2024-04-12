@@ -68,7 +68,7 @@
         });
     });
     function validateEmailAddress(EmailId) {
-        var expr = /^[a-zA-Z0-9._]+[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+        var emailRegex = /^[^\s@]+@(ac\.in|[^@\s]+\.[^@\s]+)$/;
         if (expr.test(EmailId)) {
             return true;
         }

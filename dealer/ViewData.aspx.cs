@@ -102,7 +102,7 @@ public partial class dealer_ViewData : System.Web.UI.Page
         btnupdate.Visible = true;
        txtdname.ReadOnly = false;
         txtlname.ReadOnly = false;
-        txtdename.ReadOnly = false;
+        txtdename.ReadOnly = true;
         txtemail.ReadOnly = false;
         txtadd.ReadOnly = false;
         txtcno.ReadOnly = false;

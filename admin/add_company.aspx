@@ -20,8 +20,8 @@
         //}
 
         // Checking if the company name meets the requirements
-        if (!/^[a-zA-Z0-9]{5,}$/.test(companyName)) {
-            alert("Company name should be at least 5 characters long and contain only alphanumeric characters.");
+        if (!/^[a-zA-Z0-9]+$/.test(companyName)) {
+            alert("Company name should contain only alphanumeric characters.");
             return false;
         }
         // Get the file input element
