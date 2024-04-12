@@ -26,7 +26,13 @@
 }</style><style id="jarallax-clip-1" type="text/css">#jarallax-container-1 {
    clip: rect(0px 1440px 611px 0);
    clip: rect(0px, 1440px, 611px, 0);
-}</style></head>
+}</style>
+		<script type="text/javascript">
+ function preventBack() { window.history.forward(); }
+ setTimeout("preventBack()", 0);
+ window.onunload = function () { null };
+   </script>
+      </head>
 
 <body>
 <!-- banner section -->

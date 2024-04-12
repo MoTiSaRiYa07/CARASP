@@ -62,11 +62,11 @@ public partial class admin_home : System.Web.UI.Page
 
 
 
-        //string uuuu = "select count(id) from tbl_popular";
-        //da = new SqlDataAdapter(uuuu, x.cn);
-        //ds = new DataSet();
-        //da.Fill(ds);
-        //lblpur.Text = ds.Tables[0].Rows[0][0].ToString();
+        string uuuu = "select count(id) from tbl_popular";
+        da = new SqlDataAdapter(uuuu, x.cn);
+        ds = new DataSet();
+        da.Fill(ds);
+        lblpur.Text = ds.Tables[0].Rows[0][0].ToString();
 
 
         string uuuuu = "select count(testdrive_id) from tbl_testdrive3";

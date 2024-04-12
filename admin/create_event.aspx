@@ -20,8 +20,9 @@
                       <div class="col-lg-3">
 
                       <asp:TextBox ID="txtedate" runat="server" class="form-control" placeholder="YYYY-MM-DD"> </asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="Enter date" ForeColor="Red" ControlToValidate="txtedate"></asp:RequiredFieldValidator>
-                                         
+<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="Enter date" ForeColor="Red" ControlToValidate="txtedate"></asp:RequiredFieldValidator>
+           <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtedate" ErrorMessage="Invalid date format. Use MM/DD/YYYY format" ForeColor="Red" ValidationExpression="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}$"></asp:RegularExpressionValidator>                                         
+                                               
                       </div>
                         </div>
                           </div>
@@ -37,8 +38,10 @@
                       <div class="col-lg-3">
 
                       <asp:TextBox ID="txtename" runat="server" class="form-control" placeholder="Event Name"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter Event name" ForeColor="Red" ControlToValidate="txtename"></asp:RequiredFieldValidator>
-                                         
+<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter Event name" ForeColor="Red" ControlToValidate="txtename"></asp:RequiredFieldValidator>
+         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtename" ErrorMessage="Event name must contain only letters and capital letters" ForeColor="Red" ValidationExpression="^[A-Za-z\s]+$"></asp:RegularExpressionValidator>                                        
+
+                                             
                       </div>
                         </div>
                           </div>
@@ -46,31 +49,38 @@
                     </div>
                     
                       <br /><br />
-                      <div class="form-group">
-                  <label class="control-label col-lg-2" for="inputSuccess"> Event ADD:*</label>
-                    <div class="col-lg-10">
-                      <div class="row">
-                      <div class="col-lg-3">
+                    <div class="form-group">
+    <label class="control-label col-lg-2" for="inputSuccess"> Event ADD:*</label>
+    <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-3">
+                <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
+                    <asp:ListItem Text="Surat" Value="Surat"></asp:ListItem>
+                    <asp:ListItem Text="Vadodara" Value="Vadodara"></asp:ListItem>
+        <asp:ListItem Text="Rajkot" Value="Rajkot"></asp:ListItem>
+        <asp:ListItem Text="Amarli" Value="Amarli"></asp:ListItem>
+      <asp:ListItem Text="Navsari" Value="Navsari"></asp:ListItem>
+   <asp:ListItem Text="Veraval" Value="Veraval"></asp:ListItem>
+     <asp:ListItem Text="Bhuj" Value="Bhuj"></asp:ListItem>
+<asp:ListItem Text="Patan" Value="Patan"></asp:ListItem>
+<asp:ListItem Text="Botad" Value="Botad"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
+</div>
 
-                      <asp:TextBox ID="txteadd" runat="server" class="form-control" placeholder="City\State"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Text="Enter event Address" ForeColor="Red" ControlToValidate="txteadd"></asp:RequiredFieldValidator>
-                                         
-                      </div>
-                        </div>
-                          </div>
-
-                    </div>
-                      
-
-                      <br /><br />
+                      <br /><br /> <br /> <br />
                         <div class="form-group">
                   <label class="control-label col-lg-2" for="inputSuccess"> Website</label>
                     <div class="col-lg-10">
                       <div class="row"> 
                       <div class="col-lg-3">
                         <asp:TextBox ID="txtewebsite" runat="server" class="form-control" placeholder="ex:-www.xyz.com"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" Text="Enter Website" ForeColor="Red" ControlToValidate="txtewebsite"></asp:RequiredFieldValidator>
-                                         
+ <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" Text="Enter Website" ForeColor="Red" ControlToValidate="txtewebsite"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtewebsite"
+                    ErrorMessage="Invalid Website Format" ForeColor="Red"
+                    ValidationExpression="^(https?://)?([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+\.[a-zA-Z]{2,4}(/\S*)?$"></asp:RegularExpressionValidator>                                         
                       </div>
                         </div>
                           </div>

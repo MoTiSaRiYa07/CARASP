@@ -48,10 +48,10 @@
 
 <body>
     <!-- container section start -->
-  <section id="container" class="">
+  <section id="container" class="" >
 
 
-    <header class="header dark-bg">
+    <header class="header dark-bg" >
       <div class="toggle-nav">
         <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
       </div>
@@ -73,13 +73,13 @@
           <!-- alert notification start-->
           <!-- alert notification end-->
           <!-- user login dropdown start-->
-          <li class="dropdown">
+          <li class="dropdown" >
 
 
 
           <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
           <ItemTemplate>      
-               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+               <a data-toggle="dropdown" class="dropdown-toggle" href="#" >
                             <span class="profile-ava">
                                 <img alt="" src='profile_pic/<%# Eval("profile_pic") %>' height="50px" width="50px">
                             </span>
@@ -94,7 +94,7 @@
                   </asp:SqlDataSource>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
+            <li class="eborder-top">
                 <a href="admin_detail.aspx"><i class="icon_profile"></i> My Profile</a>
               </li>
                  <li class="eborder-top">
@@ -112,10 +112,10 @@
       </div>
     </header>
     <!--header end-->
-
+      
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
+      <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
@@ -123,6 +123,8 @@
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
+             
+              
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">

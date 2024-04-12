@@ -22,7 +22,7 @@ public partial class admin_create_event : System.Web.UI.Page
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
         x.cnopen();
-        str = "insert into tbl_event values('" + txtedate.Text + "','" + txtename.Text + "','" + txteadd.Text + "','" + txtewebsite.Text + "')";
+        str = "insert into tbl_event values('" + txtedate.Text + "','" + txtename.Text + "','" + ddlCity.SelectedValue + "','" + txtewebsite.Text + "')";
         cmd = new SqlCommand(str, x.cn);
         cmd.ExecuteNonQuery();
         x.cnclose();
@@ -33,7 +33,7 @@ public partial class admin_create_event : System.Web.UI.Page
     {
         txtedate.Text = "";
         txtename.Text = "";
-        txteadd.Text = "";
+        ddlCity.SelectedValue = "";
         txtewebsite.Text = "";
     }
 }

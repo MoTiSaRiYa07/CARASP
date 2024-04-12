@@ -28,6 +28,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//style sheet end here-->
 
 <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 103;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,8 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="mid-cls">
 <%--                <asp:Label ID="lbl" runat="server" Text="Label"></asp:Label>--%>
 <div class="swm-right-w3ls">
- <form action="#" method="post">
- 			<div class="main">
+ 			<div class="auto-style1">
 				<div class="icon-head-wthree">
         <%--<h2><span class="fa fa-diamond t-w3" aria-hidden="true"></span></h2>--%>
 		<h4>Change Password</h4>
@@ -93,6 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 	 	 <asp:Label ID="lblMessage" runat="server"></asp:Label>
 
      </div>
+ <form action="#" method="post">
 <%--	 		 	 		 <asp:Label ID="Label1" runat="server"></asp:Label>--%>
 
 

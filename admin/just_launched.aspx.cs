@@ -31,6 +31,11 @@ public partial class admin_just_launched : System.Web.UI.Page
             msg = true;
 
         }
+        if (IsCompanyNameExists(txtcar.Text))
+        {
+            lblStatus.Text = "Company name already exists. Please choose a different one.";
+            return;
+        }
         x.cnopen();
         str1 = "insert into tbl_just_launched values('" + txtcar.Text + "','" + txtmodel.Text + "'," + txtprice.Text + ",'" + txtdate.Text + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
         cmd = new SqlCommand(str1, x.cn);
@@ -40,6 +45,75 @@ public partial class admin_just_launched : System.Web.UI.Page
 
 
     }
+
+    private bool IsCompanyNameExists(object companyName)
+    {
+        bool exists = false;
+        using (SqlConnection connection = new SqlConnection("Data Source=JAYRAMAPIR\\SQLEXPRESS04;Initial Catalog=\"E:\\AUTO MOBILE\\APP_DATA\\DATABASE.MDF\";Integrated Security=True;Encrypt=False"))
+        {
+            string query = "SELECT COUNT(*) FROM tbl_just_launched WHERE comp = @CompanyName";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@CompanyName", companyName);
+
+            try
+            {
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                exists = (count > 0);
+
+                if (!exists)
+                {
+                    // Add your code here to add the new company to the database
+                    // For example:
+                    // AddNewCompany(companyName);
+
+                    // Set label status for successful addition
+                    lblStatus.Text = "Company added successfully.";
+                    lblStatus.ForeColor = System.Drawing.Color.Green;
+                    lblStatus.Visible = true;
+
+                    //txtcname.BackColor = System.Drawing.Color.Green;
+
+
+                }
+                else
+                {
+                    // Company already exists
+                    lblStatus.Text = "Company already exists.";
+                    lblStatus.ForeColor = System.Drawing.Color.Red;
+                    lblStatus.Visible = true;
+                    //txtcname.BackColor = System.Drawing.Color.Red;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                lblStatus.Text = "An error occurred while adding the company.";
+                lblStatus.ForeColor = System.Drawing.Color.Red;
+                lblStatus.Visible = true;
+            }
+
+            //    finally
+            //    {
+            //        // Clear the status label message
+            //        lblStatus.Text = "";
+            //        lblStatus.Visible = false;
+            //    }
+
+            //finally
+            //{
+            //    // Clear the status label message
+            //    lblStatus.Text = "";
+            //    lblStatus.Visible = false;
+            //}
+        }
+
+
+
+        return exists;
+    }
+
     public void clear()
     {
         txtcar.Text = "";

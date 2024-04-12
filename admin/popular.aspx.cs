@@ -32,11 +32,17 @@ public partial class admin_popular : System.Web.UI.Page
 
         }
         x.cnopen();
-        str1 = "insert into tbl_popular values('" + ddlcompname.SelectedItem + "','" + ddlmodel.SelectedItem + "'," + txtprice.Text + ",'" + txtfuel.Text + "','" + fu1.FileName + "'," + ddlstatus.SelectedValue + ")";
+        str1 = "INSERT INTO tbl_popular VALUES (@CompName, @Model, @Price, @fuel, @FileName, @Status)";
         cmd = new SqlCommand(str1, x.cn);
+        cmd.Parameters.AddWithValue("@CompName", ddlcompname.SelectedItem.ToString());
+        cmd.Parameters.AddWithValue("@Model", ddlmodel.SelectedItem.ToString());
+        cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtprice.Text));
+        cmd.Parameters.AddWithValue("@fuel", ddlFuel.SelectedValue);
+        cmd.Parameters.AddWithValue("@FileName", fu1.FileName);
+        cmd.Parameters.AddWithValue("@Status", ddlstatus.SelectedValue);
         cmd.ExecuteNonQuery();
         x.cnclose();
-        txtfuel.Text = "";
+        ddlFuel.Items.Clear();
         txtprice.Text = "";
 
     }

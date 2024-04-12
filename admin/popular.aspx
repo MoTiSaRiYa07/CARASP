@@ -1,6 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="popular.aspx.cs" Inherits="admin_popular" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <script type="text/javascript">
+ function ValidateFileUpload() {
+     var fu = document.getElementById('<%=fu1.ClientID %>');
+     var fileName = fu.value;
+     var ext = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+     if (ext == "jpg" || ext == "png") {
+         return true;
+     } else {
+         alert("Please select a JPG or PNG file.");
+         return false;
+     }
+ }
+     </script>
 <section id="main-content" style="margin-left: 180px;">
       <section class="wrapper">
         <div class="row">
@@ -59,24 +72,38 @@
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
                                      <asp:TextBox ID="txtprice" runat="server" class="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="Enter price" ForeColor="Red" ControlToValidate="txtprice"></asp:RequiredFieldValidator>
-                                         
+<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="Enter price" ForeColor="Red" ControlToValidate="txtprice"></asp:RequiredFieldValidator>
+          <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtprice" ErrorMessage="Price must be between 5000 and 1000000" ForeColor="Red" Type="Integer" MinimumValue="5000" MaximumValue="1000000"></asp:RangeValidator>                                        
+
+                                              
                                          </div>
                        </div>
                  </div>
                  <br /> <br /> 
 
-                   <div class="form-group">
+                 <%--  <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess"> Fuel </label>
                              <div class="col-lg-10">
                                 <div class="col-lg-3">
                                      <asp:TextBox ID="txtfuel" runat="server" class="form-control"></asp:TextBox>
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter fuel" ForeColor="Red" ControlToValidate="txtfuel"></asp:RequiredFieldValidator>
                                          
                                          </div>
                        </div>
-                 </div>
-                 <br /> <br /> 
+                 </div>--%>
+          <div class="form-group">
+    <label class="control-label col-lg-2" for="inputSuccess">Fuel</label>
+    <div class="col-lg-10">
+        <div class="col-lg-3">
+            <asp:DropDownList ID="ddlFuel" runat="server" CssClass="form-control">
+                <asp:ListItem Text="Petrol" Value="Petrol"></asp:ListItem>
+                <asp:ListItem Text="Diesel" Value="Diesel"></asp:ListItem>
+            </asp:DropDownList>
+        </div>
+    </div>
+</div>
+
+                 <br /> <br />  <br />
+          
                  <div class="form-group">
                     <label for="exampleInputFile" class="control-label col-lg-2">Uplode Photo</label>
                       <div class="col-lg-10">
@@ -90,7 +117,9 @@
                    <%-- <input id="exampleInputFile" type="file">--%>
                    <%-- <p class="help-block">Example block-level help text here.</p>--%>
                     </div>
+
                     <br /><br />
+
                    <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">Status</label>
                              <div class="col-lg-10">
@@ -112,7 +141,7 @@
                             <div class="col-lg-10">
                               <%-- <button class="btn btn-primary" type="submit">Submit</button>--%>
                                   <asp:Button ID="btnsubmit" runat="server" Text="Submit" 
-                                    class="btn btn-primary" onclick="btnsubmit_Click" BackColor="#333333" ></asp:Button>
+                                    class="btn btn-primary" onclick="btnsubmit_Click" BackColor="#333333"  OnClientClick="return ValidateFileUpload();" ></asp:Button>
                             </div>
               </div> 
 

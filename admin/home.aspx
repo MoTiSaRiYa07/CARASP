@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="admin_home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    		<script type="text/javascript">
+ function preventBack() { window.history.forward(); }
+ setTimeout("preventBack()", 0);
+ window.onunload = function () { null };
+            </script>
 <section id="main-content" >
 <section class="wrapper">
             <!--overview start-->
@@ -72,7 +77,7 @@
    </div>
    <!--/.col-->
     
-           <div class="row">
+        <%--   <div class="row">
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
          <div class="info-box blue-bg">
            <i class="fa fa-car"></i>
@@ -82,22 +87,38 @@
   <!--/.info-box-->
 </div>
               
-<!--/.col-->
-    
-      <%--         
-           <div class="row">
-<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-         <div class="info-box brown-bg">
-           <i class="fa fa-car"></i>
-  <div class="count"><asp:Label ID="lblpur" runat="server" Text="Label"></asp:Label></div>
-   <div class="title">Popular car</div>
+<!--/.col-->--%>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+   <div class="info-box blue-bg">
+     <i class="fa fa-car"></i>
+     <div class="count"><asp:Label ID="lblupc" runat="server" Text="Label"></asp:Label></div>
+     <div class="title">Upcoming car</div>
+   </div>
+   <!--/.info-box-->
+ </div>
+ <!--/.col-->
+
+             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+  <div class="info-box brown-bg">
+    <i class="fa fa-car"></i>
+    <div class="count"><asp:Label ID="lblpur" runat="server" Text="Label"></asp:Label></div>
+    <div class="title">Popular</div>
   </div>
   <!--/.info-box-->
-</div>--%>
-<!--/.col-->
+</div>
 
- 
-                        
+
+         
+             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+  <div class="info-box red-bg">
+    <i class="fa fa-car"></i>
+    <div class="count"><asp:Label ID="lbltestdrive" runat="server" Text="Label"></asp:Label></div>
+   <div class="title">TESTDRIVEBOOKING</div>
+  </div>
+  <!--/.info-box-->
+</div>
+<!--/.col-->
+     <%--                   
            <div class="row">
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
          <div class="info-box red-bg">
@@ -110,7 +131,7 @@
                </div>
                </div>
          </div>
-   
+   --%>
 
 <%--        <div class="row">
 

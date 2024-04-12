@@ -1,6 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="news.aspx.cs" Inherits="admin_news" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript">
+function ValidateFileUpload() {
+    var fu = document.getElementById('<%=fu1.ClientID %>');
+    var fileName = fu.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+    if (ext == "jpg" || ext == "png") {
+        return true;
+    } else {
+        alert("Please select a JPG or PNG file.");
+        return false;
+    }
+}
+    </script>
 <section id="main-content" >
       <section class="wrapper">
         <div class="row">
@@ -19,6 +32,9 @@
                       <div class="col-lg-3">
 
                       <asp:TextBox ID="txtnews" runat="server" class="form-control" placeholder="Name"> </asp:TextBox>
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter News" ForeColor="Red" ControlToValidate="txtnews"></asp:RequiredFieldValidator>
+         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtnews" ErrorMessage=" news must contain only letters and capital letters" ForeColor="Red" ValidationExpression="^[A-Za-z\s]+$"></asp:RegularExpressionValidator>                                        
+
                       </div>
                         </div>
                           </div>
@@ -36,6 +52,9 @@
                       <div class="col-lg-3">
 
                       <asp:TextBox ID="txtdetail" runat="server" class="form-control" placeholder="Desciption"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Text="Enter Desciption" ForeColor="Red" ControlToValidate="txtdetail"></asp:RequiredFieldValidator>
+<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtdetail" ErrorMessage=" Desciption must contain only letters and capital letters" ForeColor="Red" ValidationExpression="^[A-Za-z\s]+$"></asp:RegularExpressionValidator>                                        
+
                       </div>
                         </div>
                           </div>
@@ -51,6 +70,9 @@
                       <div class="col-lg-3">
 
                       <asp:TextBox ID="txtdate" runat="server" class="form-control" placeholder="Date"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" Text="Enter date" ForeColor="Red" ControlToValidate="txtdate"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtdate" ErrorMessage="Invalid date format. Use MM/DD/YYYY format" ForeColor="Red" ValidationExpression="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}$"></asp:RegularExpressionValidator>                                         
+     
                       </div>
                         </div>
                           </div>
@@ -73,12 +95,12 @@
 
                     </div>
                     
-                    <br /><br />
+                    <br /><br /> </br> <br />
                 
                                 <div class="panel-body">
                             <div class="col-lg-10">
                               <asp:Button ID="btnsubmit" runat="server" Text="Submit" class="btn btn-primary" 
-                                    onclick="btnsubmit_Click">
+                                    onclick="btnsubmit_Click" OnClientClick="return ValidateFileUpload();">
                                     </asp:Button>
                             </div>
                                    

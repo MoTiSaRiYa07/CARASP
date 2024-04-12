@@ -15,34 +15,26 @@
     }
     </script>
     <section id="main-content" style="margin-left: 180px;">
-      <section class="wrapper">
+      <section class="wrapper"> 
         <div class="row">
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-file-text-o"></i> UPCOMING CARS</h3>
             </div>
             </div>
 
-                <div class="form-group">
-                       <label class="control-label col-lg-2" for="inputSuccess">Car name</label>
+              <div class="form-group">
+       <label class="control-label col-lg-2" for="inputSuccess">Company name</label>
+             <div class="col-lg-10">
+                <div class="col-lg-3">
+                                  <asp:TextBox ID="txtcomp" runat="server" class="form-control"></asp:TextBox>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter compny name" ForeColor="Red" ControlToValidate="txtmodel"></asp:RequiredFieldValidator>
+         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtmodel" ErrorMessage="compny name must contain only letters and capital letters" ForeColor="Red" ValidationExpression="^[A-Za-z\s]+$"></asp:RegularExpressionValidator>                                        
 
-                             <div class="col-lg-10">
-                                <div class="col-lg-3">
-                                      
-                                     <asp:TextBox ID="txtcar" runat="server" class="form-control"></asp:TextBox>
-<%--                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter company name" ForeColor="Red" ControlToValidate="txcar"></asp:RequiredFieldValidator>--%>
-<%--                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter company name" ForeColor="Red" ControlToValidate="txtcar"></asp:RequiredFieldValidator>--%>
-<%--            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtcar" ErrorMessage="Only alphanumeric characters and capital letters are allowed" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9\s]+$"></asp:RegularExpressionValidator>--%>
-                                 
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="Enter car name" ForeColor="Red" ControlToValidate="txtcar"></asp:RequiredFieldValidator>
-          <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtmodel" ErrorMessage="car name must contain only letters and capital letters" ForeColor="Red" ValidationExpression="^[A-Za-z\s]+$"></asp:RegularExpressionValidator>                                        
-    
-                                
-                                </div>
-                       </div>
-                 </div>
+                             </div>
+                    </div>
+              </div>
 
-               <br /> <br /> 
-
+ <br/><br/>
                   <div class="form-group">
                        <label class="control-label col-lg-2" for="inputSuccess">Model name</label>
                              <div class="col-lg-10">
@@ -95,7 +87,7 @@
                             </div>
                         </div>
                            
-                 <br /> <br /> 
+                 <br /> <br />  <br />
                  <div class="form-group">
                     <label for="exampleInputFile" class="control-label col-lg-2">Upload Photo</label>
                       <div class="col-lg-10">
@@ -110,7 +102,7 @@
                    <%-- <p class="help-block">Example block-level help text here.</p>--%>
                     </div>
                                    
-                             
+                             <br /> <br /> <br /> <br />
 
                               <div class="panel-body">
                             <div class="col-lg-10">
@@ -119,6 +111,8 @@
                                     class="btn btn-primary" onclick="btnsubmit_Click" BackColor="#333333"  OnClientClick="return ValidateFileUpload();"></asp:Button>
                             </div>
               </div> 
+          <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
+
 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource1"  BackColor="White" Width="90%"  
                     BorderStyle="None"  BorderWidth="4px" CellPadding="4">
                     <Columns>
@@ -142,7 +136,10 @@
                <SortedDescendingHeaderStyle BackColor="#275353" />
 
 </asp:GridView>
- <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [tbl_upcoming] WHERE [id] = @id" InsertCommand="INSERT INTO [tbl_upcoming] ([comp], [model], [expected_price], [expected_date], [photo], [status]) VALUES (@comp, @model, @expected_price, @expected_date, @photo, @status)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT [id], [comp], [model], [expected_price], [expected_date], [photo], [status] FROM [tbl_upcoming]" UpdateCommand="UPDATE [tbl_upcoming] SET [comp] = @comp, [model] = @model, [expected_price] = @expected_price, [expected_date] = @expected_date, [photo] = @photo , [status] = @status WHERE [id] = @id" ID="SqlDataSource1"><DeleteParameters>
+ <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+     DeleteCommand="DELETE FROM [tbl_upcoming] WHERE [id] = @id" 
+     InsertCommand="INSERT INTO [tbl_upcoming] ([comp], [model], [expected_price], [expected_date], [photo], [status]) VALUES (@comp, @model, @expected_price, @expected_date, @photo, @status)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+     SelectCommand="SELECT [id], [comp], [model], [expected_price], [expected_date], [photo], [status] FROM [tbl_upcoming]" UpdateCommand="UPDATE [tbl_upcoming] SET [comp] = @comp, [model] = @model, [expected_price] = @expected_price, [expected_date] = @expected_date, [photo] = @photo , [status] = @status WHERE [id] = @id" ID="SqlDataSource1"><DeleteParameters>
 <asp:Parameter Name="id" Type="Int32"></asp:Parameter>
 </DeleteParameters>
 <InsertParameters>

@@ -12,7 +12,7 @@ public partial class user_logout : System.Web.UI.Page
         Session.RemoveAll();
         Session.Abandon();
 
-        Response.Redirect("home.aspx");
+        Response.Redirect("./login/Login2.aspx");
 
     }
 }
