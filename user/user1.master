@@ -47,7 +47,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 									  <li><a href="find_car.aspx"><span>Find New Cars</span></a></li>
 									  <li><a href="testdrive.aspx"><span>Book Test drive</span></a></li>
-									  
+			 	                  <li><a href="Showtest.aspx"><span>Book Show Data</span></a></li>
+
 									  <li><a href="find_dealer.aspx"><span>Locate Dealer</span></a></li>
        							  
 							    <li><a href="compare.aspx">Compare Cars</a></li>
@@ -61,6 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                  <asp:HyperLink ID="hllogin" NavigateUrl="~/user/login/login_signup.aspx" runat="server">Login</asp:HyperLink>
                              <%--<a href="compare.aspx">Login</a>--%>
                              </li> <li>
+
 
 								        <asp:HyperLink ID="h1profile" NavigateUrl="viewdata.aspx" runat="server">PROFILE</asp:HyperLink>
    <%--<a href="compare.aspx">Login</a>--%>

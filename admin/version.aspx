@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="version.aspx.cs" Inherits="admin_version" %>
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="version.aspx.cs" Inherits="admin_version" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -100,6 +100,7 @@
                             </div>
               </div>
             
+
             
             </section>
            </section>

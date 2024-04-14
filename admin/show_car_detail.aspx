@@ -93,8 +93,9 @@
 
                      <br /><br /><br />
 <asp:GridView ID="gvfactor" runat="server" BackColor="White"  
-                    BorderStyle="None"  BorderWidth="4px" CellPadding="4" ForeColor="#333333" 
-        DataKeyNames="id" DataSourceID="SqlDataSource4" >
+                    BorderStyle="Solid"  BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+        DataKeyNames="id" DataSourceID="SqlDataSource4" BorderColor="#999999" GridLines="Vertical" >
+    <AlternatingRowStyle BackColor="#CCCCCC" />
     <Columns>
         <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" 
             ReadOnly="True" SortExpression="id" />
@@ -113,15 +114,15 @@
             SortExpression="no_of_gears" />
   
     </Columns>
-     <FooterStyle BackColor="White" Font-Names="Arial" ForeColor="#333333" />
-               <HeaderStyle BackColor="#343d3d" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
-               <PagerStyle BackColor="#343d3d" ForeColor="White" HorizontalAlign="Center" />
-               <RowStyle BackColor="White" ForeColor="#333333" Font-Names="Arial" Font-Bold="true" BorderColor="#343d3d" />
-               <SelectedRowStyle BackColor="#339966" Font-Bold="True" Font-Names="Arial" ForeColor="White"    BorderColor="#343d3d" />
-               <SortedAscendingCellStyle BackColor="#F7F7F7" />
-               <SortedAscendingHeaderStyle BackColor="#487575" />
-               <SortedDescendingCellStyle BackColor="#E5E5E5" />
-               <SortedDescendingHeaderStyle BackColor="#275353" />
+     <FooterStyle BackColor="#CCCCCC" Font-Names="Arial" />
+               <HeaderStyle BackColor="Black" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
+               <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+               <RowStyle Font-Names="Arial" BorderColor="#343d3d" />
+               <SelectedRowStyle BackColor="#000099" Font-Bold="True" Font-Names="Arial" ForeColor="White"    BorderColor="#343d3d" />
+               <SortedAscendingCellStyle BackColor="#F1F1F1" />
+               <SortedAscendingHeaderStyle BackColor="#808080" />
+               <SortedDescendingCellStyle BackColor="#CAC9C9" />
+               <SortedDescendingHeaderStyle BackColor="#383838" />
 
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
@@ -135,9 +136,9 @@
 
     <br/><br/>
 
-    <asp:GridView ID="gvspecification" runat="server" AutoGenerateColumns="False" BackColor="White"  
-                    BorderStyle="None"  BorderWidth="4px" CellPadding="4" ForeColor="#333333"  
-        DataKeyNames="specification_id" DataSourceID="SqlDataSource5">
+    <asp:GridView ID="gvspecification" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333"  
+        DataKeyNames="specification_id" DataSourceID="SqlDataSource5" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="specification_id" HeaderText="SpecificationID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="specification_id" />
@@ -159,15 +160,16 @@
                 SortExpression="fuel_capacity" />
            
         </Columns>
-         <FooterStyle BackColor="White" Font-Names="Arial" ForeColor="#333333" />
-               <HeaderStyle BackColor="#343d3d" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
-               <PagerStyle BackColor="#343d3d" ForeColor="White" HorizontalAlign="Center" />
-               <RowStyle BackColor="White" ForeColor="#333333" Font-Names="Arial" Font-Bold="true" BorderColor="#343d3d" />
-               <SelectedRowStyle BackColor="#339966" Font-Bold="True" Font-Names="Arial" ForeColor="White"    BorderColor="#343d3d" />
-               <SortedAscendingCellStyle BackColor="#F7F7F7" />
-               <SortedAscendingHeaderStyle BackColor="#487575" />
-               <SortedDescendingCellStyle BackColor="#E5E5E5" />
-               <SortedDescendingHeaderStyle BackColor="#275353" />
+         <EditRowStyle BackColor="#7C6F57" />
+         <FooterStyle BackColor="#1C5E55" Font-Names="Arial" ForeColor="White" Font-Bold="True" />
+               <HeaderStyle BackColor="#1C5E55" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
+               <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+               <RowStyle BackColor="#E3EAEB" Font-Names="Arial" BorderColor="#343d3d" />
+               <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" Font-Names="Arial" ForeColor="#333333"    BorderColor="#343d3d" />
+               <SortedAscendingCellStyle BackColor="#F8FAFA" />
+               <SortedAscendingHeaderStyle BackColor="#246B61" />
+               <SortedDescendingCellStyle BackColor="#D4DFE1" />
+               <SortedDescendingHeaderStyle BackColor="#15524A" />
     </asp:GridView>
               
     <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
@@ -253,6 +255,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     </section>
+
     </section>
     
 </asp:Content>

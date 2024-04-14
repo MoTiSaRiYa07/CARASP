@@ -1,11 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/user1.master" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="user_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-	<script type="text/javascript">
- function preventBack() { window.history.forward(); }
- setTimeout("preventBack()", 0);
- window.onunload = function () { null };
-   </script>
+	
 <form id="Form1" runat="server">
 <div class="featured_section_w3l">
 		<div class="container">

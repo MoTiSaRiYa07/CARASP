@@ -22,6 +22,12 @@
 	<!--//style sheet end here-->
 
 <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+
+    	<script type="text/javascript">
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 0);
+            window.onunload = function () { null };
+        </script>
      <style>
 
      .for1

@@ -145,40 +145,43 @@
               </div>
 
 
-<asp:GridView ID="GridView1" BackColor="White"  
-                    BorderStyle="None"  BorderWidth="4px" CellPadding="4" ForeColor="#333333" runat="server" AutoGenerateColumns="False" DataKeyNames="modelid" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource2"><Columns>
+<asp:GridView ID="GridView1" CellPadding="4" ForeColor="#333333" runat="server" AutoGenerateColumns="False" DataKeyNames="modelid" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource2" GridLines="None" Width="494px">
+    <AlternatingRowStyle BackColor="White" />
+    <Columns>
     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 <asp:BoundField DataField="modelid" HeaderText="Model ID" ReadOnly="True" SortExpression="modelid"></asp:BoundField>
 <asp:BoundField DataField="compid" HeaderText="Company ID" SortExpression="compid"></asp:BoundField>
 <asp:BoundField DataField="modelname" HeaderText="Model Name" SortExpression="modelname"></asp:BoundField>
-<asp:BoundField DataField="image" HeaderText="Image" SortExpression="image"></asp:BoundField>
+<%--<asp:BoundField DataField="image" HeaderText="Image" SortExpression="image"></asp:BoundField>--%>
 <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status"></asp:BoundField>
 </Columns>
 
-  <FooterStyle BackColor="White" Font-Names="Arial" ForeColor="#333333" />
-               <HeaderStyle BackColor="#343d3d" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
-               <PagerStyle BackColor="#343d3d" ForeColor="White" HorizontalAlign="Center" />
-               <RowStyle BackColor="White" ForeColor="#333333" Font-Names="Arial" Font-Bold="true" BorderColor="#343d3d" />
-               <SelectedRowStyle BackColor="#339966" Font-Bold="True" Font-Names="Arial" ForeColor="White"    BorderColor="#343d3d" />
-               <SortedAscendingCellStyle BackColor="#F7F7F7" />
-               <SortedAscendingHeaderStyle BackColor="#487575" />
-               <SortedDescendingCellStyle BackColor="#E5E5E5" />
-               <SortedDescendingHeaderStyle BackColor="#275353" />
+    <EditRowStyle BackColor="#7C6F57" />
+
+  <FooterStyle BackColor="#1C5E55" Font-Names="Arial" ForeColor="White" Font-Bold="True" />
+               <HeaderStyle BackColor="#1C5E55" Font-Bold="True"  Font-Names="Arial" ForeColor="White" />
+               <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+               <RowStyle BackColor="#E3EAEB" Font-Names="Arial" BorderColor="#343d3d" />
+               <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" Font-Names="Arial" ForeColor="#333333"    BorderColor="#343d3d" />
+               <SortedAscendingCellStyle BackColor="#F8FAFA" />
+               <SortedAscendingHeaderStyle BackColor="#246B61" />
+               <SortedDescendingCellStyle BackColor="#D4DFE1" />
+               <SortedDescendingHeaderStyle BackColor="#15524A" />
 
 </asp:GridView>
  <asp:SqlDataSource runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
         DeleteCommand="DELETE FROM [tbl_model] WHERE [modelid] = @modelid" 
-        InsertCommand="INSERT INTO [tbl_model] ([compid], [modelname],[image], [status]) VALUES (@compid, @modelname, @status)" 
-        SelectCommand="SELECT [modelid], [compid], [modelname],[image], [status] FROM [tbl_model]" 
-        UpdateCommand="UPDATE [tbl_model] SET [compid] = @compid, [modelname] = @modelname, [image] = @image,[status] = @status WHERE [modelid] = @modelid" 
+        InsertCommand="INSERT INTO [tbl_model] ([compid], [modelname], [status]) VALUES (@compid, @modelname, @status)" 
+        SelectCommand="SELECT [modelid], [compid], [modelname], [status] FROM [tbl_model]" 
+        UpdateCommand="UPDATE [tbl_model] SET [compid] = @compid, [modelname] = @modelname, [status] = @status WHERE [modelid] = @modelid" 
         ID="SqlDataSource2"><DeleteParameters>
 <asp:Parameter Name="modelid" Type="Int32"></asp:Parameter>
 </DeleteParameters>
 <InsertParameters>
 <asp:Parameter Name="compid" Type="Int32"></asp:Parameter>
 <asp:Parameter Name="modelname" Type="String"></asp:Parameter>
-<asp:Parameter Name="image" Type="String"></asp:Parameter>
+<%--<asp:Parameter Name="image" Type="String"></asp:Parameter>--%>
 <asp:Parameter Name="status" Type="Int32"></asp:Parameter>
 </InsertParameters>
 <UpdateParameters>

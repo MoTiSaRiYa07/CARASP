@@ -15,6 +15,7 @@ public partial class user_user1 : System.Web.UI.MasterPage
             hllogout.Visible = false;
             h1profile.Visible = false;
             h1change.Visible = false;
+           
         }
         else
         {
