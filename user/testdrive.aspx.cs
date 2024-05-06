@@ -72,82 +72,6 @@ public partial class user_testdrive : System.Web.UI.Page
         // Proceed with the test drive booking
         InsertTestDriveBooking();
 
-        //x.cnopen();
-        //string paymentOrderId = PaymentOrderId.Value;
-        //string paymentId = PaymentId.Value;
-
-        //string query = "INSERT INTO tbl_testdrive3 (user_name, last_name, email, phoneno, compid, modelid, city, date, dealerid, payment_order_id, payment_id) VALUES (@user_name, @last_name, @email, @phoneno, @compid, @modelid, @city, @date, @dealerid, @payment_order_id, @payment_id)";
-
-        //SqlCommand cmd = new SqlCommand(query, x.cn);
-        //cmd.Parameters.AddWithValue("@user_name", txtname.Text);
-        //cmd.Parameters.AddWithValue("@last_name", txtlname.Text);
-        //cmd.Parameters.AddWithValue("@email", txtemail.Text);
-        //cmd.Parameters.AddWithValue("@phoneno", txtphoneno.Text);
-        //cmd.Parameters.AddWithValue("@compid", ddlcomp.SelectedValue);
-        //cmd.Parameters.AddWithValue("@modelid", ddlmodel.SelectedValue);
-        //cmd.Parameters.AddWithValue("@city", ddlcity.SelectedValue);
-        //cmd.Parameters.AddWithValue("@date", txtdate.Text);
-        //cmd.Parameters.AddWithValue("@dealerid", Label1.Text);
-        //cmd.Parameters.AddWithValue("@payment_order_id", paymentOrderId);
-        //cmd.Parameters.AddWithValue("@payment_id", paymentId);
-
-        //cmd.ExecuteNonQuery();
-
-       
-
-        //Response.Write("<script>alert('YOUR TEST DRIVE IS SUCCESSFULLY BOOKED.');window.location.href = 'home.aspx';</script>");
-
-        //x.cnopen();
-        //string paymentOrderId = PaymentOrderId.Value;
-        //string paymentId = PaymentId.Value;
-
-        //string query = "INSERT INTO tbl_testdrive3 (user_name, last_name, email, phoneno, compid, modelid, city, date, dealerid, payment_order_id, payment_id) VALUES (@user_name, @last_name, @email, @phoneno, @compid, @modelid, @city, @date, @dealerid, @payment_order_id, @payment_id)";
-
-        //SqlCommand cmd = new SqlCommand(query, x.cn);
-        //cmd.Parameters.AddWithValue("@user_name", txtname.Text);
-        //cmd.Parameters.AddWithValue("@last_name", txtlname.Text);
-        //cmd.Parameters.AddWithValue("@email", txtemail.Text);
-        //cmd.Parameters.AddWithValue("@phoneno", txtphoneno.Text);
-        //cmd.Parameters.AddWithValue("@compid", ddlcomp.SelectedValue);
-        //cmd.Parameters.AddWithValue("@modelid", ddlmodel.SelectedValue);
-        //cmd.Parameters.AddWithValue("@city", ddlcity.SelectedValue);
-        //cmd.Parameters.AddWithValue("@date", txtdate.Text);
-        //cmd.Parameters.AddWithValue("@dealerid", Label1.Text);
-        //cmd.Parameters.AddWithValue("@payment_order_id", paymentOrderId);
-        //cmd.Parameters.AddWithValue("@payment_id", paymentId);
-
-        //cmd.ExecuteNonQuery();
-
-        //// Send email to user
-        //string toEmail = txtemail.Text;
-        //string subject = "Test Drive Booking Confirmation";
-        ////string body = "<span style='color:green;font-size:10px;'>Dear " + txtname.Text + " " + txtlname.Text + ",<br><br>Your test drive booking has been successfully confirmed. Here are the details of your booking:<br><br>";
-        //string body = "<span style='font-size:15px;'>TEST DRIVE BOOKING<br><br>DEALER CONFIRM TEST DRIVE BOOKING YOUR TEST DRIVE SELECT CITY: " + ddlcity.SelectedValue + "<br>";
-        //body += "<span style='font-size:15px;'>Name: " + txtname.Text + " " + txtlname.Text + "<br>";
-        //body += "<span style='font-size:15px;'>Phone Number: " + txtphoneno.Text + "<br>";
-        //body += "<span style='font-size:15px;'>City: " + ddlcity.SelectedValue + "<br>";
-        //body += "<span style='font-size:15px;'>BOOKING DATE: " + txtdate.Text + "<br>";
-        //body += "<span style='font-size:15px;'>Payment ID: " + paymentId + "<br><br>";
-        //body += "<span style='font-size:15px;'>Thank you for Booking us. We look forward to serving you.<br><br>";
-        //body += "<span style='font-size:15px;'>Best regards,<br>";
-        ////body += "<span style='color:green;font-size:20px;'>TEST DRIVE BOOKING</span>";
-        ////body += "DEALER CONFIRM TEST DRIVE BOOKING YOUR TEST DRIVE SELECT CITY ";
-
-        //MailMessage mail = new MailMessage();
-        //mail.To.Add(toEmail);
-        //mail.From = new MailAddress("kingofembroidery@gmail.com");
-        //mail.Subject = subject;
-        //mail.Body = body;
-        //mail.IsBodyHtml = true;
-
-        //SmtpClient smtp = new SmtpClient();
-        //smtp.Host = "smtp.gmail.com";
-        //smtp.Port = 587;
-        //smtp.Credentials = new NetworkCredential("kingofembroidery@gmail.com", "nhucdvtnfsemscnv");
-        //smtp.EnableSsl = true;
-        //smtp.Send(mail);
-
-        //Response.Write("<script>alert('YOUR TEST DRIVE IS SUCCESSFULLY BOOKED.');window.location.href = 'home.aspx';</script>");
     }
 
     private void InsertTestDriveBooking()
@@ -254,6 +178,8 @@ public partial class user_testdrive : System.Web.UI.Page
     {
 
         Label1.Text = GridView1.SelectedRow.Cells[1].Text;
+        // Check if any row is selected
+       
 
 
     }
@@ -350,10 +276,21 @@ public partial class user_testdrive : System.Web.UI.Page
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
+        //if (e.Row.RowType == DataControlRowType.DataRow)
+        //{
+        //    // Add JavaScript to set the selected index on row click
+        //    e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackEventReference(GridView1, "Select$" + e.Row.RowIndex.ToString());
+        //}
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
-            // Add JavaScript to set the selected index on row click
+            // Add JavaScript only for data rows
             e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackEventReference(GridView1, "Select$" + e.Row.RowIndex.ToString());
+            e.Row.Style["cursor"] = "pointer"; // Add pointer cursor to indicate clickable row
         }
+    }
+
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+
     }
 }

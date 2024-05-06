@@ -172,12 +172,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             //    isValid = false;
             //}
             else {
-                var usernameRegex = /^[a-zA-Z]+$/;
-                if (!usernameRegex.test(username)) {
-                    //errorMessage = "First Name can only contain letters";
-                    alert("First name can only contain letters");
+                //var usernameRegex = /^[a-zA-Z]+$/;
+                //if (!usernameRegex.test(username)) {
+                //    //errorMessage = "First Name can only contain letters";
+                //    alert("First name can only contain letters");
 
-                    isValid = false;
+                //    isValid = false;
                 }
             }
 
@@ -193,17 +193,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                  isValid = false;
              } else if (username1.length < minLength || username1.length > maxLength) {
-                 //errorMessage = "Last name must be between " + minLength + " and " + maxLength + " characters long.";
-                 alert("Last name must be between " + minLength + " and " + maxLength + " characters long.");
+                 ////errorMessage = "Last name must be between " + minLength + " and " + maxLength + " characters long.";
+                 //alert("Last name must be between " + minLength + " and " + maxLength + " characters long.");
 
-                 isValid = false;
+                 //isValid = false;
              } else {
-                 var username1Regex = /^[a-zA-Z]+$/;
-                 if (!username1Regex.test(username1)) {
-                     //errorMessage = "Last name can only contain letters";
-                     alert(" Last name can only contain letters");
+                 //var username1Regex = /^[a-zA-Z]+$/;
+                 //if (!username1Regex.test(username1)) {
+                 //    //errorMessage = "Last name can only contain letters";
+                 //    alert(" Last name can only contain letters");
 
-                     isValid = false;
+                 //    isValid = false;
                  }
              }
              $("#error_txtlname").text(errorMessage);

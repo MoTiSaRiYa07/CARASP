@@ -322,6 +322,34 @@
                                 ></asp:TextBox>
                      
 				</div>
+
+                
+
+<%--                ==============================================--%>
+				<div class="clearfix"></div>
+			</div>
+           	
+            	 <div class="year">
+	
+	<div>   
+		
+<%--<asp:TextBox ID="TextBox1" runat="server" required=""  placeholder="date"--%>
+
+<%--<asp:Timer ID="timer1" runat="server"  required="" placeholder="time"
+style= "outline: none;color: #999;
+ padding: 10px 10px 10px 30px;
+ margin: 0;
+ width: 100%;
+ border: none;
+ border-bottom: 2px solid #686464;
+ -webkit-appearance: none;
+ font-family: 'Open Sans', sans-serif;"
+  ReadOnly></asp:Timer>
+		--%>
+
+       
+
+<%--                ==============================================--%>
 				<div class="clearfix"></div>
 			</div>
            	
